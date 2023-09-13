@@ -61,7 +61,10 @@ const config = {
             },
           },
           blogSidebarTitle: 'All posts',
-          blogSidebarCount: 0,
+          blogSidebarCount: 5,
+          postsPerPage: 2, // blog 메뉴에 들어왔을때, 페이지 당 보여주는 블로그 수
+          blogListComponent: '@theme/BlogListPage', // 블로그 리스트 컴포넌트
+          blogPostComponent: '@theme/BlogPostPage', // 블로그 디테일 컴포넌트
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
