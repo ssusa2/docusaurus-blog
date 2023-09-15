@@ -51,25 +51,34 @@ const config = {
           feedOptions: {
             type: 'all',
             copyright: `Copyright © ${new Date().getFullYear()} Facebook, Inc.`,
-            createFeedItems: async (params) => {
-              const {blogPosts, defaultCreateFeedItems, ...rest} = params;
-              return defaultCreateFeedItems({
-                // keep only the 10 most recent blog posts in the feed
-                blogPosts: blogPosts.filter((item, index) => index < 10),
-                ...rest,
-              });
-            },
+            // createFeedItems: async (params) => {
+            //   const {blogPosts, defaultCreateFeedItems, ...rest} = params;
+            //   return defaultCreateFeedItems({
+            //     // keep only the 10 most recent blog posts in the feed
+            //     blogPosts: blogPosts.filter((item, index) => index < 10),
+            //     ...rest,
+            //   });
+            // },
           },
-          blogSidebarTitle: 'All posts',
-          blogSidebarCount: 5,
-          postsPerPage: 2, // blog 메뉴에 들어왔을때, 페이지 당 보여주는 블로그 수
+          
+          // blogSidebarTitle: 'All posts',
+          blogSidebarCount: 0,
+          postsPerPage: "ALL", // blog 메뉴에 들어왔을때, 페이지 당 보여주는 블로그 수
           blogListComponent: '@theme/BlogListPage', // 블로그 리스트 컴포넌트
           blogPostComponent: '@theme/BlogPostPage', // 블로그 디테일 컴포넌트
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: ({locale, blogDirPath, blogPath, permalink}) =>
+          `https://github.com/ssusa2/docusaurus-blog/blob/master/${blogDirPath}/${blogPath}`,
+          editLocalizedFiles: false,
+          include: ['**/*.{md,mdx}'],
+          exclude: [
+            '**/_*.{js,jsx,ts,tsx,md,mdx}',
+            '**/_*/**',
+            '**/*.test.{js,jsx,ts,tsx}',
+            '**/__tests__/**',
+          ],
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -102,32 +111,6 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Tutorial',
-                to: '/docs/intro',
-              },
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
-            ],
-          },
-          {
             title: 'More',
             items: [
               {
@@ -136,12 +119,12 @@ const config = {
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/ssusa2',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} WebLlet, Inc. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,

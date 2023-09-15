@@ -6,25 +6,195 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-color-primary: #255565;
+  --ifm-color-primary-dark: #214d5b;
+  --ifm-color-primary-darker: #1f4856;
+  --ifm-color-primary-darkest: #1a3c47;
+  --ifm-color-primary-light: #295e6f;
+  --ifm-color-primary-lighter: #2b6274;
+  --ifm-color-primary-lightest: #306f83;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --base:black;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
+  --ifm-color-primary: #fff9f0;
+  --ifm-color-primary-dark: #ffe5bf;
+  --ifm-color-primary-darker: #ffdba6;
+  --ifm-color-primary-darkest: #ffbe5b;
+  --ifm-color-primary-light: #ffffff;
+  --ifm-color-primary-lighter: #ffffff;
+  --ifm-color-primary-lightest: #ffffff;
+  --ifm-background-color: #255565;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --base:#e3e3e3;
 }
+
+
+
+ /* 블로그 커스텀 css START */
+.blog-list-item {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  margin-bottom: 40px;
+  /* background-color: #1fa588; */
+}
+.blog-list-item:hover{
+  text-decoration: none;
+}
+
+.blog-list-item:hover .blog-list-img{
+  /* text-decoration: none; */
+  /* background-color: #1fa588; */
+  transform: translateY(-10px);
+  box-shadow: 0 5px 30px rgba(37, 85, 101, 0.4);
+}
+.blog-list-item:hover .blog-list-content-title{
+  color: var(--ifm-color-primary);
+}
+
+.blog-list-item:hover .blog-list-date {
+  right: 0;
+  opacity: 1;
+}
+
+.blog-list-img-wrap {
+  position: relative;
+  width: 100% !important;
+  max-width: 280px;
+  height:280px !important;
+}
+.blog-list-img{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  object-fit: cover;
+  transition: 0.3s all ease-in-out;
+}
+.blog-list-date{
+  position: absolute;
+  bottom: 0;
+  right: -100px;
+  opacity: 0;
+  color: #4e5968;
+  transition: 0.3s all ease-in-out;
+
+}
+
+.blog-list-content{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.blog-list-content-desc{
+  font-size: 17px;
+  color: #4e5968;
+}
+
+.blog-list-content-title{
+  color: var(--base);
+  font-size: 36px;
+  transition: 0.2s all ease-in-out;
+}
+.blog-list-content-title:hover{
+  text-decoration: none;
+  color: var(--ifm-color-primary);
+}
+
+.blog-list-tag-list{
+  display: flex;
+  gap: 12px;
+}
+.blog-list-tag-item{
+  font-size: 14px;
+  padding: 0px 14px;
+  border-radius: 200px;
+  color: #868b94;
+  background-color: #f2f3f6;
+}
+.blog-list-tag-item:hover{
+  text-decoration: none;
+  background-color: var(--ifm-color-primary-darkest);
+  color: white;
+}
+
+
+/*  */
+.table-of-contents__link--active{
+  font-weight: 600;
+}
+/*  */
+
+/* PaginatorNavLink START */
+.pagination-nav__link{
+  border: none;
+  padding: 0;
+}
+
+.pagination-nav__sublabel{
+  margin-top: 8px;
+}
+.pagination-nav__link--next img{
+  border-top-right-radius: 14px;
+  border-bottom-right-radius: 14px;
+    transition: 0.3s all ease-in-out;  
+}
+.pagination-nav__link--next:hover img{
+    box-shadow: 0 5px 30px rgba(37, 85, 101, 0.25);
+}
+
+.pagination-nav__link--next{
+  transition: 0.3s all ease-in-out;
+
+}
+.pagination-nav__link--next:hover{
+  transform: translateY(-10px);
+
+}
+.pagination-nav__link--prev{
+  transition: 0.3s all ease-in-out;
+
+}
+
+.pagination-nav__link--prev:hover{
+  transform: translateY(-10px);
+
+}
+
+
+.pagination-nav__link--prev:hover img{
+    box-shadow: 0 5px 30px rgba(37, 85, 101, 0.25);
+
+}
+
+.pagination-nav__link--prev img{
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 14px;
+    transition: 0.3s all ease-in-out;
+
+
+}
+
+
+
+/* PaginatorNavLink END */
+@media (max-width: 700px) {
+  .blog-list-item{
+    display: block;
+  }
+  .blog-list-img-wrap {
+    width: 100%;  
+    max-width: initial;
+    margin-bottom: 20px;
+  }
+  .blog-list-content-title{
+    font-size: 26px;
+  }
+}
+
+ /* 블로그 커스텀 css END */
