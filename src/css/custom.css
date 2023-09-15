@@ -56,10 +56,7 @@
   color: var(--ifm-color-primary);
 }
 
-.blog-list-item:hover .blog-list-date {
-  right: 0;
-  opacity: 1;
-}
+
 
 .blog-list-img-wrap {
   position: relative;
@@ -76,12 +73,9 @@
   transition: 0.3s all ease-in-out;
 }
 .blog-list-date{
-  position: absolute;
-  bottom: 0;
-  right: -100px;
-  opacity: 0;
-  color: #4e5968;
-  transition: 0.3s all ease-in-out;
+  color: #868b94;
+  font-size: 14px;
+  /* transition: 0.3s all ease-in-out; */
 
 }
 
@@ -108,6 +102,7 @@
 
 .blog-list-tag-list{
   display: flex;
+  justify-content: space-between;
   gap: 12px;
 }
 .blog-list-tag-item{
@@ -194,6 +189,12 @@
   }
   .blog-list-content-title{
     font-size: 26px;
+  }
+  .blog-list-date{
+    color: #868b94;
+    font-size: 13px;
+    /* transition: 0.3s all ease-in-out; */
+  
   }
 }
 

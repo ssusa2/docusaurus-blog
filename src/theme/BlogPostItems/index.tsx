@@ -3,6 +3,20 @@ import { BlogPostProvider } from "@docusaurus/theme-common/internal"
 import BlogPostItem from "@theme/BlogPostItem"
 import type { Props } from "@theme/BlogPostItems"
 
+function Date({
+  date,
+  formattedDate,
+}: {
+  date: string
+  formattedDate: string
+}) {
+  return (
+    <time dateTime={date} itemProp='datePublished'>
+      {formattedDate}
+    </time>
+  )
+}
+
 export default function BlogPostItems({
   items,
   component: BlogPostItemComponent = BlogPostItem,
@@ -33,19 +47,30 @@ export default function BlogPostItems({
                 <p className='blog-list-content-desc'>
                   {BlogPostContent.metadata.description}
                 </p>
-                <div className='blog-list-tag-list'>
-                  {BlogPostContent.frontMatter.tags.map((el, i) => {
-                    console.log("tag", el)
-                    return (
-                      <a
-                        className='blog-list-tag-item'
-                        key={i}
-                        href={`/blog/tags/${el}`}
-                      >
-                        {`${el} `}
-                      </a>
-                    )
-                  })}
+                <div>
+                  <div className='blog-list-tag-list'>
+                    <div className='blog-list-tag-list'>
+                      {BlogPostContent.frontMatter.tags.map((el, i) => {
+                        console.log("tag", el)
+                        return (
+                          <a
+                            className='blog-list-tag-item'
+                            key={i}
+                            href={`/blog/tags/${el}`}
+                          >
+                            {`${el} `}
+                          </a>
+                        )
+                      })}
+                    </div>
+
+                    <div className='blog-list-date'>
+                      <Date
+                        date={BlogPostContent.metadata.date}
+                        formattedDate={BlogPostContent.metadata.formattedDate}
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </a>

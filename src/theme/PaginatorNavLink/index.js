@@ -4,7 +4,7 @@ import Link from '@docusaurus/Link';
 export default function PaginatorNavLink(props) {
   const {permalink, title, subLabel, isNext} = props;
   console.log({permalink, title, subLabel, isNext})
-  const path = permalink.split("/")[2]
+  const path = permalink?.split("/")[2]
   return (
     <Link
       className={clsx(

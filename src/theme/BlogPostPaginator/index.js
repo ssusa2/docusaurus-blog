@@ -7,9 +7,7 @@ export default function BlogPostPaginator(props) {
   const data = useBlogPost()
 console.log( data)
   const {nextItem, prevItem} = props;
-  console.log({nextItem, prevItem})
-  const path = prevItem.permalink.split("/")[2]
-  console.log(path)
+
   return (
     <nav
       className="pagination-nav docusaurus-mt-lg"
@@ -30,8 +28,6 @@ console.log( data)
           }
         />
       )}
-      {/* <img src={`/img/${path}.png`}/>
-      <h3>123</h3> */}
       {nextItem && (
         <PaginatorNavLink
           {...nextItem}
