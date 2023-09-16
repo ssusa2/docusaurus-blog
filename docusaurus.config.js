@@ -6,7 +6,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'WebLlet',
+  title: 'Dulu',
   tagline: 'Dinosaurs are cool',
   favicon: 'img/favicon.ico',
   themes: ['@docusaurus/theme-live-codeblock'],
@@ -20,8 +20,8 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'WebLlet', // Usually your repo name.
+  organizationName: 'ssusa2', // Usually your GitHub org/user name.
+  projectName: 'Dulumungsil', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -93,11 +93,11 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'WebLlet',
-        logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.svg',
-        },
+        title: 'Dulu',
+        // logo: {
+        //   alt: 'My Site Logo',
+        //   src: 'img/logo.svg',
+        // },
         items: [
           {to: '/blog', label: 'Blog', position: 'left'},
           {
@@ -111,7 +111,7 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'More',
+            title: 'About',
             items: [
               {
                 label: 'Blog',
@@ -124,7 +124,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} WebLlet, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Dulu, Inc. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
