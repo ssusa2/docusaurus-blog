@@ -1,0 +1,90 @@
+---
+slug: test2
+title: 두루뭉술
+authors: [suin]
+tags: [TS, Omit]
+image: /img/test2.png
+---
+
+두루뭉술 하는 것은 꼭 나쁜 것일까?
+
+<!--truncate-->
+
+![사용했던 타입에서 특정 타입빼고 재활용하기](/img/test2.png)
+
+타입을 지정하면서 과거에 사용했던 타입과 하나 차이로 새로운 타입을 새로 만들어 지정하는 경우가 많아졌다.<br/>
+무언가 방법이 있을 것 같았는데 찾아보지 않고 넘기다가 더 이상 미룰 수 없어서 찾아봤더니 역시나 있었고 해당 내용을 정리해보자.
+
+## Omit
+
+생략하다 라는 뜻을 가진 TypeScript의 Utility Types 중 하나로,<br/>
+특정 타입에서 원하는 타입을 빼고 나머지 타입을 가져올 수 있다.
+
+`Omit <가져올 타입, "특정 타입 키(복수 가능)">`
+
+---
+
+### Example
+
+여기 메뉴리스트에 쓰이는 타입이 있다.
+
+```ts
+type MenuListType = {
+  id: number
+  title: string
+  icon: string
+  navigate: string
+}
+```
+
+<br />
+
+타입 **MenuListType** 에서 **"title"** 이란 키 값을 제외한 타입을 가져오고 싶다면
+아래처럼 작성할 수 있다.<br/>
+
+```ts
+interface ListType extends Omit<MenuListType, "title"> {}
+```
+
+또는
+
+```ts
+type ListType = Omit<MenuListType, "title">
+```
+
+<br />
+
+**"title"** 값을 제외하고 **"name"** 이란 값을 추가해보자.
+
+```ts
+interface ListType extends Omit<MenuListType, "title"> {
+  name: string
+}
+```
+
+또는
+
+```ts
+type ListType = Omit<MenuListType, "title"> & { name: string }
+```
+
+### 두개이상의 타입 제외
+
+```ts
+type ListType = Omit<MenuListType, "title" | "icon"> & { name: string }
+```
+
+제외할 값이 여러 개라면 ` | 구분자`로 제외할 값에 여러 개를 포함할 수 있다.
+
+<br />
+
+이제 타입이 같지만 이름이 달라서 혹은 타입이 몇개 차이로 달라 새로 만든 타입의 경우
+Omit를 사용하여 기존의 타입을 재활용할 수 있을 것 같다.
+
+<br />
+
+다음에는 기존 타입를 확장해서 타입을 추가하는 방법에 대해 찾아봐야할 것 같네..
+
+<br />
+
+[예시 코드 보러가기](https://www.typescriptlang.org/play?#code/C4TwDgpgBAshB2BXAMgSwM7ACrmgXigG8AoKKVAEwC4okBbAIwgCdSphVgAbCGzZ1PADmbVAGMA9vD7ABwtvACGAN1RDFwXlH6CRAX2LEA9EbIdu0QEg1gEXGogHAnAHmOAdVaiABhcCh41ECoE4A1x4oM1mADNFMWg0TABJeECQsKgIAA9NeAp0KAB5Ok4AHjgkCOxcABooACJzHjKAPkIDYkl4THYITABGKkLo2ND8IlFqKDaAJgBmYrZKrTKdYTKJsnEpGhnZXXmFFTUNadmhDb0AbgapZs12jq6Ylji+kkXBkfHRRpW9jbIlVXVNN7W5iZHQygSBQQo4UEELK5fIoDBFSClCqcKrVQyNM6tYDDTrwiF3AY0J4Ldgo3b-fYkpbScrvElfba-WkUg7HE5NYAtTDDHHg3BQAj3ciPMZU17MuSUzbfHZ-SWswwmKCGQxAA)

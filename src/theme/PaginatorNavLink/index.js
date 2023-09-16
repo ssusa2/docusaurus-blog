@@ -4,7 +4,8 @@ import Link from '@docusaurus/Link';
 export default function PaginatorNavLink(props) {
   const {permalink, title, subLabel, isNext} = props;
   console.log({permalink, title, subLabel, isNext})
-  const path = permalink?.split("/")[2]
+  const path = permalink
+  console.log("path",path)
   return (
     <Link
       className={clsx(
@@ -14,7 +15,7 @@ export default function PaginatorNavLink(props) {
       to={permalink}>
 
       {/* <div className="pagination-nav__label">{title}</div> */}
-      <img src={`/img/${path}.png`}/>
+      <img src={`/img${path}.png`}/>
       {subLabel && <div className="pagination-nav__sublabel">{title}</div>}
     </Link>
   );
