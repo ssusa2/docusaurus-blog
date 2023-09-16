@@ -48,6 +48,7 @@ const config = {
         //     'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         // },
         blog: {
+          
           blogTitle:"123",
           blogDescription:"특별히 모나거나 튀지 않고 골고루 하려고 노력합니다.",
           routeBasePath: '/', 
@@ -93,6 +94,7 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      image: 'img/docusaurus.png',
       // Replace with your project's social card
       // image: 'img/docusaurus-social-card.jpg',
       navbar: {
