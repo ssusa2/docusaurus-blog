@@ -6,11 +6,11 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Dulu',
-  tagline: 'Dinosaurs are cool',
+  title: "Dulumungsil",
+  // tagline: '두루뭉실 - 특별히 모나거나 튀지 않고 골고루 ',
+  titleDelimiter: '-', // Defaults to `|`
   favicon: 'img/favicon.ico',
   themes: ['@docusaurus/theme-live-codeblock'],
-  // plugins: ['@docusaurus/theme-live-codeblock'],
   // Set the production url of your site here
   url: 'https://your-docusaurus-test-site.com',
   // Set the /<baseUrl>/ pathname under which your site is served
@@ -48,17 +48,20 @@ const config = {
         //     'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         // },
         blog: {
+          blogTitle:"123",
+          blogDescription:"특별히 모나거나 튀지 않고 골고루 하려고 노력합니다.",
+          routeBasePath: '/', 
           feedOptions: {
             type: 'all',
             copyright: `Copyright © ${new Date().getFullYear()} Facebook, Inc.`,
-            // createFeedItems: async (params) => {
-            //   const {blogPosts, defaultCreateFeedItems, ...rest} = params;
-            //   return defaultCreateFeedItems({
-            //     // keep only the 10 most recent blog posts in the feed
-            //     blogPosts: blogPosts.filter((item, index) => index < 10),
-            //     ...rest,
-            //   });
-            // },
+            createFeedItems: async (params) => {
+              const {blogPosts, defaultCreateFeedItems, ...rest} = params;
+              return defaultCreateFeedItems({
+                // keep only the 10 most recent blog posts in the feed
+                blogPosts: blogPosts.filter((item, index) => index < 10),
+                ...rest,
+              });
+            },
           },
           
           // blogSidebarTitle: 'All posts',
@@ -91,15 +94,16 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      // image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'Dulu',
-        // logo: {
-        //   alt: 'My Site Logo',
-        //   src: 'img/logo.svg',
-        // },
+        // hideOnScroll:true, 
+        title: '두루뭉실',
+        logo: {
+          alt: 'My Site Logo',
+          src: 'img/logo.png',
+        },
         items: [
-          {to: '/blog', label: 'Blog', position: 'left'},
+          // {to: '/blog', label: 'Blog', position: 'left'},
           {
             href: 'https://github.com/ssusa2',
             label: 'GitHub',
@@ -109,22 +113,7 @@ const config = {
       },
       footer: {
         style: 'dark',
-        links: [
-          {
-            title: 'About',
-            items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/ssusa2',
-              },
-            ],
-          },
-        ],
-        copyright: `Copyright © ${new Date().getFullYear()} Dulu, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Dulumungsil, Inc. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,

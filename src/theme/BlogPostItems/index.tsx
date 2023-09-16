@@ -32,7 +32,7 @@ export default function BlogPostItems({
           <article className='blog-list-item'>
             <a
               className='blog-list-item'
-              href={`/blog/${BlogPostContent.frontMatter.slug}`}
+              href={`/${BlogPostContent.frontMatter.slug}`}
             >
               <div className='blog-list-img-wrap'>
                 <img
@@ -56,7 +56,7 @@ export default function BlogPostItems({
                           <a
                             className='blog-list-tag-item'
                             key={i}
-                            href={`/blog/tags/${el}`}
+                            href={`/tags/${el}`}
                           >
                             {`${el} `}
                           </a>
