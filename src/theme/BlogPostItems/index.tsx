@@ -29,7 +29,7 @@ export default function BlogPostItems({
           key={BlogPostContent.metadata.permalink}
           content={BlogPostContent}
         >
-          <article className='blog-list-item'>
+          <article>
             <a
               className='blog-list-item'
               href={`/${BlogPostContent.frontMatter.slug}`}
