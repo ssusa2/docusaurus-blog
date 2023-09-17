@@ -38,10 +38,9 @@
 .blog-list-item {
   width: 100% !important;
   display: flex !important;
-  /* flex-direction: row !important; */
+  flex-direction: row !important;
   gap: 20px !important;
   margin-bottom: 40px !important;
-  /* background-color: #1fa588; */
 }
 .blog-list-item:hover{
   text-decoration: none !important;
@@ -81,10 +80,11 @@
 }
 
 .blog-list-content{
+  max-width: 658px;
   width: 100% !important;
-  /* display: flex !important;
-  flex-direction: column !important; */
-  /* justify-content: space-between !important; */
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
 }
 .blog-list-content-desc{
   font-size: 17px !important;
@@ -187,6 +187,9 @@
     width: 100% !important;  
     max-width: initial !important;
     margin-bottom: 20px !important;
+  }
+  .blog-list-content{
+    max-width: unset;
   }
   .blog-list-content-title{
     font-size: 26px !important;
