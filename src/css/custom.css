@@ -38,7 +38,7 @@
 .blog-list-item {
   width: 100% !important;
   display: flex !important;
-  flex-direction: row !important;
+  /* flex-direction: row !important; */
   gap: 20px !important;
   margin-bottom: 40px !important;
 }
