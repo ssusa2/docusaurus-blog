@@ -11,10 +11,10 @@ export default function BlogLayout(props) {
         <div className="row">
           <BlogSidebar sidebar={sidebar} />
           <main
-            // className={clsx('col', {
-            //   'col--7': hasSidebar,
-            //   'col--9 col--offset-1': !hasSidebar,
-            // })}
+            className={clsx('col', {
+              'col--7': hasSidebar,
+              'col--9 col--offset-1': !hasSidebar,
+            })}
             itemScope
             itemType="http://schema.org/Blog">
             {children}

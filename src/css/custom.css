@@ -181,7 +181,7 @@
 /* PaginatorNavLink END */
 @media (max-width: 700px) {
   .blog-list-item{
-    display: block !important;
+    display: block;
   }
   .blog-list-img-wrap {
     width: 100% !important;  
