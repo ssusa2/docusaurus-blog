@@ -2,7 +2,7 @@
 slug: Docusaurus-blog
 title: Docusaurus로 블로그 만들기
 authors: [suin]
-tags: [Docusaurus, tool, Ready]
+tags: [Docusaurus, Ready]
 image: /img/Docusaurus-blog.png
 status:
 ---
@@ -10,6 +10,22 @@ status:
 나는 어쩌다 Docusaurus로 블로그를 만들게 되었을까..에 대한 이야기 + 커스터마이징
 
 <!--truncate-->
+
+export const Highlight = ({ children, color }) => (
+  <span
+    style={{
+      backgroundColor: color,
+      borderRadius: "2px",
+      color: "#fff",
+      padding: "0.2rem",
+    }}
+  >
+    {children}
+  </span>
+)
+
+<Highlight color='#25c2a0'>Docusaurus green</Highlight> and
+<Highlight color='#1877F2'>Facebook blue</Highlight> are my favorite colors.
 
 ![Docusaurus](/img/Docusaurus-blog.png)
 
