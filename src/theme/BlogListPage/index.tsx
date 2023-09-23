@@ -7,7 +7,7 @@ import {
   HtmlClassNameProvider,
   ThemeClassNames,
 } from "@docusaurus/theme-common"
-import BlogLayout from "@theme/BlogLayout"
+import BlogLayout from "../BlogLayout/list"
 import BlogListPaginator from "@theme/BlogListPaginator"
 import SearchMetadata from "@theme/SearchMetadata"
 import type { Props } from "@theme/BlogListPage"

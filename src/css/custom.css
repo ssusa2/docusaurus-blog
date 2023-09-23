@@ -20,6 +20,7 @@
 :root p{
   font-size: 17px;
   color: #333d4b;
+  line-height:1.6;
 }
 
 [data-theme='dark'] p{
