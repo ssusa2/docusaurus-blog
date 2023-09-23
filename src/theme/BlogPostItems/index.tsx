@@ -23,7 +23,7 @@ export default function BlogPostItems({
 }: Props): JSX.Element {
   return (
     <>
-      {items.map(({ content: BlogPostContent }) => (
+      {items?.map(({ content: BlogPostContent }) => (
         <BlogPostProvider
           key={BlogPostContent.metadata.permalink}
           content={BlogPostContent}
