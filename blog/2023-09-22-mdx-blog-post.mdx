@@ -1,0 +1,292 @@
+---
+slug: Docusaurus-blog
+title: Docusaurus로 블로그 만들기
+authors: [suin]
+tags: [Docusaurus]
+image: /img/Docusaurus-blog.png
+keywords: [Docusaurus]
+---
+
+나는 어쩌다 Docusaurus로 블로그를 만들게 되었을까..에 대한 이야기 + 커스터마이징
+
+<!--truncate-->
+
+![Docusaurus](/img/Docusaurus-blog.png)
+
+## Docusaurus 블로그 제작기
+
+유투브 세상을 탐험하다가 한 외국 개발자분이 2023년 기준 React 라이브러리를 추천하는 영상이 우연히 나의 알고리즘에 뜨게 되었다.
+추천하는 항목을 다 합치면 한 15가지 정도의 라이브러리를 추천해주었던 것 같다.
+이미 아는 내용도 있었지만, 아예 처음보거나 사용해볼만 한데..? 좋아보이는데..? 하는 라이브러리가 있었는데 그 중 하나가 바로 **Docusaurus** 였다.
+
+보다가 나중에 시도 혹은 지인에게 추천해줄 생각으로 캡쳐를 남겼고, 그 후로 다시는 찾아보지 않았다...ㅎ
+
+## 블로그는 필수인 걸 알지만 난 힘들자나..
+
+개발자는 인간이기때문에 어느순간, 까먹을 거라는 걸 알고 있다. 까먹은 적이 너무 많기 때문에.. 알고 있을 수 밖에 없다..
+그럼에도 회사 일이 바빠서, 약속이 있어서의 등등의 이유로 블로그 글 작성을 멈춘 지가 어느 덧 1년 가까이 되어가고 있었고..
+
+계속 정신 없이 몰아치던 회사일이 어느 덧, 안정을 되찾아갔고 여유가 생겼다고 생각이 들었다.
+생각이 들자마자, 그 동안 놓치고 살았던 프론트 개발자의 필수 지식이라고 생각하는 내용을 채울려고 노력했다.
+하지만 나는 알고 있었다.. 노력하더라도 기록을 남기지 않으면 다시 잊을 거라는 것을..
+
+나는 기존에 벨로그 => 티스토리 블로그 운영경험이 있는데, 티스토리로 옮기면서 내용을 다듬고, 잘 정리하자 라는 강박이 있었기 때문에 오히려 더 막 갈기고 싶었다.
+막 갈기기에는 벨로그가 쉽고 편하니까 벨로그로 블로그를 다시 시작하려고 했지만..
+
+내 마음의 소리가 나를 불렀다.
+
+🥸 _'너 프론트 개발자..잖아..'_
+
+😥 _맞아 나 프론트야.._
+
+## 할 거 제대로 해라..
+
+**이왕 할 거 제대로 하자**는 생각은 나의 갤러리, 나의 대뇌변연계의 양 쪽 측두엽에 깊은 곳에 곤히 자고 있던
+**Docusaurus** 를 깨우는 계기가 되었다.
+
+난 마침 금요일 휴가를 냈었고, 집돌이기 때문에 금토일 시간을 때려 부었다.
+
+## 내맘대로 만든 Docusaurus
+
+Docusaurus(도큐사우로스)로 블로그를 만든 이유는 생각보다 많다.
+
+### **MDX**<br/>
+
+React + 마크다운를 사용한다.
+React문법으로 블로그를 커스터마이징하고 md으로 글을 작성한다.
+
+이는 실제로 써 보기까지는 단지 **'좋겠네..'** 라고 생각할 수 있지만 그 생각보다 훨씬 좋을지도..?<br/>
+나도 만든지 얼마 안되서 많이는 안해봤지만 예시를 따라치는 순간, 어떤 기능을 추가해볼까? 란 생각이 들었다.
+
+### **커스텀이 편하다**<br/>
+
+Docusaurus에서 기본으로 제공하는 레이아웃 스타일은 공식 홈페이지에서의
+https://docusaurus.io/blog 와 생김새가 똑같다.
+
+1. **프로젝트를 생성해보자.**
+
+```js
+npx create-docusaurus@latest my-website classic --typescript
+```
+
+위의 명령어로 입력하면 아래 이미지와 같은 구조로 생성된다.
+
+<img
+  style={{
+    width: "100%",
+  }}
+  src='./img/도큐사우로스파일구조.png'
+/>
+
+간단하게 살펴보면,
+
+## 📂 ** docusaurus.config.js**
+
+페이지를 뜯어고친다던지, 구체적으로 뭔가 변경한다? 정도의 커스텀을 제외하면 거의 ** docusaurus.config.js ** 에서 변경할 수 있을 것 같다고 생각이 든다.
+내가 설정한 값은 아래와 같다.
+
+<details>
+  <summary>docusaurus.config.js 설정</summary>
+
+```js title="docusaurus.config.js"
+const config = {
+  title: "블로그이름",
+  titleDelimiter: "블로그 제목과 설명 사이 구분자",
+  favicon: "img/favicon.ico",
+  url: "https://phenomenal-druid-6b24ec.netlify.app",
+  organizationName: "깃허브이름",
+  projectName: "블로그이름",
+  presets: [
+    [
+      {
+        docs: false, // 나는 docs가 필요없어서 비활성 처리했다.
+        blog: {
+          blogDescription: "블로그 페이지 설명(SEO)",
+          routeBasePath: "/", // 나는 블로그 페이지가 들어왔을때 메인이였으면 좋겠어서 메인 routePath를 블로그 / 로 설정했다.
+          feedOptions: {
+            type: "all",
+            copyright: `Copyright © ${new Date().getFullYear()} 블로그이름, Inc.`,
+            createFeedItems: async (params) => {
+              const { blogPosts, defaultCreateFeedItems, ...rest } = params
+              return defaultCreateFeedItems({
+                // keep only the 10 most recent blog posts in the feed
+                blogPosts: blogPosts.filter((item, index) => index < 10),
+                ...rest,
+              })
+            },
+          }, // blogSidebarTitle: 'All posts',
+          // blogSidebarCount: 0, // 나는 사이드바를 사용하지않아서 필요가 없다.
+          postsPerPage: "ALL", // blog 메뉴에 들어왔을때, 페이지 당 보여주는 블로그 수
+          blogListComponent: "@theme/BlogListPage", // 블로그 리스트 컴포넌트
+          blogPostComponent: "@theme/BlogPostPage", // 블로그 디테일 컴포넌트
+          showReadingTime: true, // 몇분짜리 글인지 정보
+          // Please change this to your repo.
+          // 수정하기 가기에 버튼에 대한  url 통일
+          editUrl: ({ locale, blogDirPath, blogPath, permalink }) =>
+            `깃 레퍼지토리주소/${blogDirPath}/${blogPath}`,
+          editLocalizedFiles: false,
+          include: ["**/*.{md,mdx}"],
+          exclude: [
+            "**/_*.{js,jsx,ts,tsx,md,mdx}",
+            "**/_*/**",
+            "**/*.test.{js,jsx,ts,tsx}",
+            "**/__tests__/**",
+          ],
+        },
+        theme: {
+          customCss: require.resolve("./src/css/custom.css"), //  블로그에서 사용할 css파일 여기다 사용하면 된다. scss 문법도 지원하는 걸로 알고 있다.
+        },
+      },
+    ],
+  ],
+  themeConfig:
+    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+    ({
+      image: "img/logo.png",
+      navbar: {
+        title: "블로그 이름",
+        logo: {
+          alt: "My Site Logo",
+          src: "img/logo.png", // 블로그 로고
+        },
+        items: [
+          // nav bar에서 사용하는 링크정보
+          {
+            href: "https://github.com/ssusa2",
+            label: "GitHub",
+            position: "right",
+          },
+        ],
+      },
+      footer: {
+        style: "dark",
+        copyright: `Copyright © ${new Date().getFullYear()} 블로그이름, Inc. Built with Docusaurus.`,
+      },
+      prism: {
+        theme: lightCodeTheme,
+        darkTheme: darkCodeTheme,
+      },
+      liveCodeBlock: {
+        // 실시간 코드블럭 (결과 바로 확인)
+        /**
+         * The position of the live playground, above or under the editor
+         * Possible values: "top" | "bottom"
+         */
+        playgroundPosition: "bottom",
+      },
+    }),
+}
+```
+
+</details>
+
+내가 설명한 부분이 다 맞을 거라고 생각은 안하지만 미관상 보는 것과 SEO에는 별 이상이 없었다... 다행..
+메인 페이지가 존재하거나 자신을 소개하는 랜딩 페이지가 있는 게 아니라 블로그가 메인 페이지라면 위의 설정 값 같이 설정하면 블로그 위주의 사이트로 설정할 수 있을 것이다.
+
+## 📂 **blog**
+
+블로그 폴더는 https://docusaurus.io/ko/blog 들어갔을때의 구조라고 보면된다.
+**주요 특징**은 왼쪽에 **사이드바**(side bar)가 있고, 블로그 리스트 페이지에서는 **CONTENT** 부분이 블로그 글의 대략적인 정보, 블로그 상세 페이지에서는 블로그 내용, **TOC** 부분은 블로그 글의 목차 부분(블로그 상세에서만 존재함)으로 **3가지 파트**로 나누어져있다고 생각하면 될 것 같다.
+또, md파일이나 mdx 파일의 이름에 따라 사이드바에 보이는 내용이 달라진다 정도로 볼 수 나눌 수 있겠다.
+
+<img
+  style={{
+    width: "100%",
+  }}
+  src='./img/blog구조.png'
+/>
+
+현재 나의 블로그는 사이드 바 부분에 대한 사용값을 지우고, 대신 CONTENT 부분의 영역이 더 넓어진 상태이다.
+
+좀 더 자세하게 살펴보자.
+
+### truncate (요약)
+
+```js
+
+⭕️ 여기는 블로그 리스트 페이지에서 보이는 내용 마크다운 작성하듯이 작성하면 된다.
+
+<!--truncate-->
+
+❌ 여기는 블로그의 내용이다. 블로그 리스트에서 보이지 않는다.
+```
+
+truncate 마커를 사용하면 블로그 리스트 페이지에서 블로그에 대한 요약내용을 설정할 수 있다.
+
+### front matter (머릿말)
+
+블로그 머릿말이다.
+저자 설정 및 SEO를 설정할 수 있다.
+
+```js
+---
+slug: Docusaurus-blog
+title: Docusaurus로 블로그 만들기
+authors: [suin]
+tags: [Docusaurus, Ready]
+image: /img/Docusaurus-blog.png
+description:나는 어쩌다 Docusaurus로 블로그를 만들게 되었을까..에 대한 이야기 + 커스터마이징
+keywords : [Docusaurus]
+---
+```
+
+**현재 페이지에 대한 설정 값**
+
+**slug** : 블로그 경로<br/>
+**title** : 블로그 제목<br/>
+**authors** : 저자 정보<br/>
+**tags** : 블로그 해시 태그<br/>
+**image** : 블로그 썸네일<br/>
+**description** : 블로그 설명<br/>
+**keywords** : 블로그 키워드 설정(SEO)
+
+---
+
+#### 외의 설정 값
+
+**draft** : 블로그 작성현황(작업중, 완료) 설정
+true로 설정시 개발환경에서만 보이고 배포환경에서는 보인다.<br/>
+**hide_table_of_contents** : TOC(목차) 숨김 설정<br/>
+**hide_title** : 블로그 글 제목 숨김 설정<br/>
+
+이 보다 더 다양한 설정이 존재하니까 필요하면 더 찾아보면 될 것 같다.
+
+[설정 더 보기](https://docusaurus.io/ko/docs/api/plugins/@docusaurus/plugin-content-docs#keywords)
+
+### authors (저자 설정)
+
+프로젝트를 생성하면 blog 폴더 하위의 **authors.yml** 이 존재할텐데, 그 파일에 저자의 정보를 저장하고 블로그 파일 front matter에서 저자이름을 사용하면 저자의 정보를 블로그에 적용시켜준다.
+
+```js title="authors.yml"
+suin:
+  name: Jeong Suin
+  title: Front End Engineer
+  url: https://github.com/ssusa2
+  image_url: https://avatars.githubusercontent.com/u/87012967?s=400&u=e92507d7c2a1f1d3f217e325e0f9c632ae0d086a&v=4
+
+```
+
+```js title="블로그파일 front matter 부분"
+
+---
+authors: [suin]
+---
+
+```
+
+블로그 파일 안에서도 저자정보를 작성할 수 있는데 front matter 부분이 너무 길어져서 그냥 글로벌로 작성해서 파일에서 하는 게 좋은 것 같다.
+
+[저자 설정 더 보기](https://docusaurus.io/ko/docs/blog#blog-post-authors)
+
+### ETC (추가기능)
+
+위의 부분 말고도 도큐사우로스에서 제공하는 기능은 생각보다 많다.
+
+지금까지 정리한 내용을 보면 어느정도의 블로그 사이트를 생성할 수 있을 것이다.
+
+[마크다운 글 보기](https://docusaurus.io/ko/docs/markdown-features)<br/>
+[블로그 설정 글 보기](https://docusaurus.io/ko/docs/blog)
+
+---
+
+앞으로 추가하는 기능이나, 공유할 만한 기능은 따로 기록하겠다.
