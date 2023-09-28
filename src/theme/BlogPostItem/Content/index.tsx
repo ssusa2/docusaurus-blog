@@ -13,7 +13,7 @@ export default function BlogPostItemContent({
 
   const isReady =
     children?.type.frontMatter.tags.at(-1) == "Ready" ? true : false
-  console.log("isReady", isReady)
+  // console.log("isReady", isReady)
   return (
     <div
       // This ID is used for the feed generation to locate the main content

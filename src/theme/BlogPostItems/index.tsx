@@ -50,7 +50,7 @@ export default function BlogPostItems({
                   <div className='blog-list-tag-list'>
                     <div className='blog-list-tag-list'>
                       {BlogPostContent.frontMatter.tags.map((el, i) => {
-                        console.log("tag", el)
+                        // console.log("tag", el)
                         return (
                           <a
                             className='blog-list-tag-item'

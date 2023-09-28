@@ -32,7 +32,6 @@ function useBlogPostsPlural() {
 }
 function useBlogTagsPostsPageTitle(tag) {
   const blogPostsPlural = useBlogPostsPlural();
-  console.log("tag", tag)
 
   return translate(
     {
@@ -54,7 +53,6 @@ function BlogTagsPostsPageMetadata({tag}) {
 }
 function BlogTagsPostsPageContent({tag, items, sidebar, listMetadata}) {
   const title = useBlogTagsPostsPageTitle(tag);
-  console.log("title", title)
 
   return (
     <BlogLayout sidebar={sidebar}>

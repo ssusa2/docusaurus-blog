@@ -31,7 +31,7 @@ function BlogListPageMetadata(props: Props): JSX.Element {
 
 function BlogListPageContent(props: Props): JSX.Element {
   const { metadata, items, sidebar } = props
-  console.log({ metadata, items, sidebar })
+  // console.log({ metadata, items, sidebar })
   return (
     <BlogLayout>
       <BlogPostItems items={items} />
@@ -41,7 +41,7 @@ function BlogListPageContent(props: Props): JSX.Element {
 }
 
 export default function BlogListPage(props: Props): JSX.Element {
-  console.log({ props })
+  // console.log({ props })
   return (
     <HtmlClassNameProvider
       className={clsx(

@@ -3,9 +3,9 @@ import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 export default function PaginatorNavLink(props) {
   const {permalink, title, subLabel, isNext} = props;
-  console.log({permalink, title, subLabel, isNext})
+  // console.log({permalink, title, subLabel, isNext})
   const path = permalink
-  console.log("path",path)
+  // console.log("path",path)
   return (
     <Link
       className={clsx(

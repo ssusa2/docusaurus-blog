@@ -5,7 +5,7 @@ import { useBlogPost } from "@docusaurus/theme-common/internal"
 
 export default function BlogPostPaginator(props) {
   const data = useBlogPost()
-console.log( data)
+// console.log( data)
   const {nextItem, prevItem} = props;
 
   return (
