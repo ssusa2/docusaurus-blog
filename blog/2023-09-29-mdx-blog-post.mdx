@@ -18,7 +18,7 @@ image: /img/Omit.png
 ## Omit
 
 생략하다 라는 뜻을 가진 TypeScript의 Utility Types 중 하나로,<br/>
-특정 타입에서 원하는 타입을 빼고 나머지 타입을 가져올 수 있다.
+**특정 타입에서 원하는 타입을 빼고 나머지 타입을 가져올 수 있다**.
 
 `Omit <가져올 타입, "특정 타입 키(복수 가능)">`
 
@@ -27,6 +27,13 @@ image: /img/Omit.png
 ### Example
 
 여기 메뉴리스트에 쓰이는 타입이 있다.
+
+<img
+  style={{
+    width: "100%",
+  }}
+  src='/img/omit-data.png'
+/>
 
 ```ts
 type MenuListType = {
@@ -37,22 +44,34 @@ type MenuListType = {
 }
 ```
 
-<br />
+id, title, icon, navigate 총 4개의 값이 있는 객체에 대한 타입이다.
 
-타입 **MenuListType** 에서 **"title"** 이란 키 값을 제외한 타입을 가져오고 싶다면
+---
+
+새로운 리스트 타입을 만들어야할 때, 메뉴리스트 타입을 재활용할 수 있으면 좋겠지만 title 값을 사용하지 않는다면?
+다시 타입을 생성해야할까?
+
+<img
+  style={{
+    width: "100%",
+  }}
+  src='/img/omit-data2.png'
+/>
+
+타입 **MenuListType** 에서 **"title"** 이란 키 값을 제외한 타입을 가져오고 싶다면 **Omit**를 사용하여
 아래처럼 작성할 수 있다.<br/>
 
 ```ts
-interface ListType extends Omit<MenuListType, "title"> {}
+interface AdminMenuListType extends Omit<MenuListType, "title"> {}
 ```
 
 또는
 
 ```ts
-type ListType = Omit<MenuListType, "title">
+type AdminMenuListType = Omit<MenuListType, "title">
 ```
 
-<br />
+---
 
 **"title"** 값을 제외하고 **"name"** 이란 값을 추가해보자.
 
@@ -83,7 +102,7 @@ Omit를 사용하여 기존의 타입을 재활용할 수 있을 것 같다.
 
 <br />
 
-다음에는 기존 타입를 확장해서 타입을 추가하는 방법에 대해 찾아봐야할 것 같네..
+다음에는 Omit의 반대 개념인 **Pick** 에 대해 공부해봐야겠다.
 
 <br />
 
