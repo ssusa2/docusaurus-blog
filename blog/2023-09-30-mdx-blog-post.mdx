@@ -7,27 +7,31 @@ image: /img/Pick.png
 draft: true
 ---
 
-타입 선언시, 이미 만들었던 타입을 재활용하려고 보니 필요하지 않은 타입이 껴있어서 재활용하지 못하는 경우가 있었다.분명 다시 재활용할 수 있는 방법이 있을거라 생각했고..역시 있었다.
+이미 생성한 타입에서 원하는 타입만 골라 새로운 타입을 만들어보자.
 
 <!--truncate-->
 
 ![사용했던 타입에서 특정 타입빼고 재활용하기](/img/Pick.png)
 
-타입을 지정하면서 과거에 사용했던 타입과 하나 차이로 새로운 타입을 새로 만들어 지정하는 경우가 많아졌다.<br/>
-무언가 방법이 있을 것 같았는데 찾아보지 않고 넘기다가 더 이상 미룰 수 없어서 찾아봤더니 역시나 있었고 해당 내용을 정리해보자.
+이미 생성한 타입를 재활용할 수 있는 방법을 찾아보다가 [Omit에 대해 공부한 글](2023-09-29-mdx-blog-post.mdx)을 작성했었고, 그 과정에서 반대개념인 Pick이 존재한다는 걸 알게되었다.
 
-## Omit
+<br />
+Omit에 이어 반대개념인 Pick에 대해서 알아보자.
 
-생략하다 라는 뜻을 가진 TypeScript의 Utility Types 중 하나로,<br/>
-**특정 타입에서 원하는 타입을 빼고 나머지 타입을 가져올 수 있다**.
+## Pick
 
-`Omit <가져올 타입, "특정 타입 키(복수 가능)">`
+선택하다,뽑다 라는 뜻을 가진 TypeScript의 Utility Types 중 하나로, 전엔 다뤘던 Omit에 반대되는 유틸리티 타입이다.<br/>
+**특정 타입에서 원하는 타입을 선택하여 선택한 타입으로 새로운 타입을 만들 수 있다.**.
+
+`Pick <가져올 타입, "특정 타입 키(복수 가능)">`
+
+유틸리티 타입 부분을 제외한 나머지 부분은 Omit 과 동일하다.
 
 ---
 
 ### Example
 
-여기 메뉴리스트에 쓰이는 타입이 있다.
+여기 Omit에 쓰였던 메뉴리스트에 쓰이는 타입이 있다.
 
 <img
   style={{
@@ -49,35 +53,34 @@ id, title, icon, navigate 총 4개의 값이 있는 객체에 대한 타입이�
 
 ---
 
-새로운 리스트 타입을 만들어야할 때, 메뉴리스트 타입을 재활용할 수 있으면 좋겠지만 title 값을 사용하지 않는다면?
-다시 타입을 생성해야할까?
+Pick 타입은 기존의 타입에서 선택한 타입만을 가지고 새로운 타입을 만든다. **navigate** 키 값만 선택하여 새로운 타입을 만들어보자.
 
 <img
   style={{
     width: "100%",
   }}
-  src='/img/omit-data2.png'
+  src='/img/pick-data2.png'
 />
 
-타입 **MenuListType** 에서 **"title"** 이란 키 값을 제외한 타입을 가져오고 싶다면 **Omit**를 사용하여
+타입 **MenuListType** 에서 **navigate** 이란 키 값만을 가져오고 싶다면 **Pick**를 사용하여
 아래처럼 작성할 수 있다.<br/>
 
 ```ts
-interface AdminMenuListType extends Omit<MenuListType, "title"> {}
+interface AdminMenuListType extends Pick<MenuListType, "navigate"> {}
 ```
 
 또는
 
 ```ts
-type AdminMenuListType = Omit<MenuListType, "title">
+type AdminMenuListType = Pick<MenuListType, "navigate">
 ```
 
 ---
 
-**"title"** 값을 제외하고 **"name"** 이란 값을 추가해보자.
+**"navigate"** 값을 선택하고 **"name"** 이란 값을 추가해보자.
 
 ```ts
-interface ListType extends Omit<MenuListType, "title"> {
+interface ListType extends Pick<MenuListType, "navigate"> {
   name: string
 }
 ```
@@ -85,26 +88,28 @@ interface ListType extends Omit<MenuListType, "title"> {
 또는
 
 ```ts
-type ListType = Omit<MenuListType, "title"> & { name: string }
+type ListType = Pick<MenuListType, "navigate"> & { name: string }
 ```
 
-### 두개이상의 타입 제외
+---
+
+### 두개이상의 타입을 선택해보자.
+
+**navigate**와 **icon** 키 값을 선택하고 싶다면?
 
 ```ts
-type ListType = Omit<MenuListType, "title" | "icon"> & { name: string }
+type ListType = Pick<MenuListType, "navigate" | "icon"> & { name: string }
 ```
 
-제외할 값이 여러 개라면 ` | 구분자`로 제외할 값에 여러 개를 포함할 수 있다.
+선택하고 싶은 값이 여러 개라면 ` | 구분자`로 제외할 값에 여러 개를 포함할 수 있다.
 
 <br />
 
-이제 타입이 같지만 이름이 달라서 혹은 타입이 몇개 차이로 달라 새로 만든 타입의 경우
-Omit를 사용하여 기존의 타입을 재활용할 수 있을 것 같다.
+기존의 타입에서 원하는 값을 추출하여 재활용할 수 있다는 점에서는 Omit과 비슷하다.
+Omit은 기존의 생성된 타입에서 크게 벗어나지 않을 때 사용하면 편리하다. 사용할 타입이 덜어낼 타입보다 많을 때, 유용하게 쓰일 것 같다.
+
+Pick은 기존의 생성된 타입에서 재활용할 타입이 많지 않을 때, 원하는 타입만 선택하여 사용한다면 유용하게 쓰일 것 같다.
 
 <br />
 
-다음에는 Omit의 반대 개념인 **Pick** 에 대해 공부해봐야겠다.
-
-<br />
-
-[예시 코드 보러가기](https://www.typescriptlang.org/play?#code/C4TwDgpgBAshB2BXAMgSwM7ACrmgXigG8AoKKVAEwC4okBbAIwgCdSphVgAbCGzZ1PADmbVAGMA9vD7ABwtvACGAN1RDFwXlH6CRAX2LEA9EbIdu0QEg1gEXGogHAnAHmOAdVaiABhcCh41ECoE4A1x4oM1mADNFMWg0TABJeECQsKgIAA9NeAp0KAB5Ok4AHjgkCOxcABooACJzHjKAPkIDYkl4THYITABGKkLo2ND8IlFqKDaAJgBmYrZKrTKdYTKJsnEpGhnZXXmFFTUNadmhDb0AbgapZs12jq6Ylji+kkXBkfHRRpW9jbIlVXVNN7W5iZHQygSBQQo4UEELK5fIoDBFSClCqcKrVQyNM6tYDDTrwiF3AY0J4Ldgo3b-fYkpbScrvElfba-WkUg7HE5NYAtTDDHHg3BQAj3ciPMZU17MuSUzbfHZ-SWswwmKCGQxAA)
+<!-- [예시 코드 보러가기](https://www.typescriptlang.org/play?#code/C4TwDgpgBAshB2BXAMgSwM7ACrmgXigG8AoKKVAEwC4okBbAIwgCdSphVgAbCGzZ1PADmbVAGMA9vD7ABwtvACGAN1RDFwXlH6CRAX2LEA9EbIdu0QEg1gEXGogHAnAHmOAdVaiABhcCh41ECoE4A1x4oM1mADNFMWg0TABJeECQsKgIAA9NeAp0KAB5Ok4AHjgkCOxcABooACJzHjKAPkIDYkl4THYITABGKkLo2ND8IlFqKDaAJgBmYrZKrTKdYTKJsnEpGhnZXXmFFTUNadmhDb0AbgapZs12jq6Ylji+kkXBkfHRRpW9jbIlVXVNN7W5iZHQygSBQQo4UEELK5fIoDBFSClCqcKrVQyNM6tYDDTrwiF3AY0J4Ldgo3b-fYkpbScrvElfba-WkUg7HE5NYAtTDDHHg3BQAj3ciPMZU17MuSUzbfHZ-SWswwmKCGQxAA) -->

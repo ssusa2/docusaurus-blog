@@ -1,0 +1,96 @@
+---
+slug: DevSettings
+title: 사소한 불편함 해결하기
+authors: [suin]
+tags: [RN]
+image: /img/DevSettings.png
+draft: true
+---
+
+React Native 개발을 한다면, 작업했던 내용을 확인하기 위해 혹은 Reload로 인해 앱의 처음 화면으로 돌아간 적이 있을 것이다. 다시 작업하던 화면을 보기위해 터치(클릭)하여 화면을 찾아갔다면 DevSettings을 사용해보자.
+
+<!--truncate-->
+
+![ReactNative DevSettings사용해보기](/img/DevSettings.png)
+
+## DevSettings ?
+
+[DevSettings](https://reactnative.dev/docs/devsettings)
+란 React-Native로 개발을 하는 개발자를 위한 설정을 개발자가 지정하여 사용할 수 있게 해주는 모듈을 말한다.
+
+웹은 url 주소로 개발중인 화면이나 보고 싶은 화면을 볼 수 있지만, 앱은 따로 url로 접근을 할 수 없기 때문에 일일이 화면을 이동을 해야만 보고 싶은 화면을 볼 수 있다.
+
+예를 들어, 앱이 켜지고 2번 이상 화면 이동을 해야만 볼 수 있는 화면이고, 개발을 하던 도중 앱 자체를 리로드하거나 모종의 이유로 앱 메인화면으로 돌아가는 일이 많았을 것인데 이때 아주 유용했다.
+
+---
+
+## 사용하는 방법을 알아보자.
+
+기존에 React-Native에서 개발자 설정을 보기 위해서는 아래와 같이 설정창을 열었었다.
+
+:::note
+
+**iOS** Simulator: Cmd ⌘ + D (or Device > Shake)
+
+:::
+:::note
+
+**Android** emulators: Cmd ⌘ + M (macOS) or Ctrl + M (Windows and Linux)
+
+:::
+
+위의 단축어를 입력하면 아래의 이미지처럼 기본적인 설정 리스트가 보인다.
+
+<EImage
+  title='개발 설정창'
+  link='https://reactnative.dev/docs/debugging'
+  url='https://reactnative.dev/assets/images/DevMenu-4927519fafc0c33e2feac1343fe946da.png'
+/>
+
+### addMenuItem()
+
+**addMenuItem를** 사용하면 원하는 아이템를 리스트에 추가할 수 있다.
+
+사용법은 추가할 아이템의 이름과, 기능을 작성해주면 된다.
+`DevSettings.addMenuItem("리스트에 추가할 아이템의 이름", () => {추가할 아이템의 기능})`
+
+아래는 내가 사용한 코드의 예시이다.
+나는 현재 검색페이지를 개발중이고 이제 어떤 페이지에서든 설정창을 열어 검색페이지로 이동이 가능해졌다.
+
+```tsx
+import { DevSettings } from "react-native"
+
+...
+...
+
+DevSettings.addMenuItem("Go Search Page", () => {
+  navigation.navigate("SearchScreen")
+})
+```
+
+설정창에 **Go Search Page**란 아이템이 추가된 걸 볼 수 있다.
+
+![ReactNative DevSettings사용해보기](/img/DevSettings-data.png)
+
+---
+
+### reload()
+
+앱을 다시 로드되게 할 수 있다.
+
+reload는 이미 개발설정창에 들어 있어서 따로 설정안해줘도 된다.
+
+하지만 어떤 특정한 이벤트에서 앱을 다시 로드시키고 싶다면 직접 호출해서 사용할 수 있다.
+
+```tsx
+// 버튼을 눌렀을 때, 앱 리로드하기
+<Button title='Reload' onPress={() => DevSettings.reload()} />
+```
+
+위는 버튼을 눌렀을 때지만, useEffect나 통신을 할 시, 서버에서 특정 값을 내려줬을 시에 리로드 시킬 수도 있다.
+
+---
+
+DevSettings 기능을 발견하기 전까지는 메인 화면에서 개발했던 화면을 보기 위해서 적게는 2번, 많게는 5번 이상의 화면이동이 필요했다.
+이 글의 제목인 **사소한 불편함 해소하기**처럼 사소한 불편함이였고, 넘어갈려면 넘어갈 수 있었던 문제라고 생각한다.
+하지만 계속 마주치게 되는 문제라면 한번쯤 해결책을 생각해보고, 해결책을 찾아보는 자세가 필요하지 않았을까 싶다.
