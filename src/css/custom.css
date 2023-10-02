@@ -48,7 +48,8 @@
   --ifm-col-width: 100% !important;
   width: 100% !important;
   display: flex !important;
-  /* flex-direction: row !important; */
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
   gap: 20px !important;
   margin-bottom: 40px !important;
 }
@@ -94,7 +95,7 @@
   --ifm-col-width: 100% !important;
   width: 100% !important;
   display: flex !important;
-  /* flex-direction: column !important; */
+  flex-direction: column !important;
   justify-content: space-between !important;
 }
 .blog-list-content-desc{
@@ -193,6 +194,8 @@
 @media  (max-width: 700px) {
   .blog-list-item{
     display: block !important;
+    flex-wrap: wrap !important;
+
   }
   .blog-list-img-wrap {
     width: 100% !important;  
