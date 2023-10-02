@@ -94,7 +94,7 @@
   --ifm-col-width: 100% !important;
   width: 100% !important;
   display: flex !important;
-  flex-direction: column !important;
+  /* flex-direction: column !important; */
   justify-content: space-between !important;
 }
 .blog-list-content-desc{
