@@ -29,23 +29,36 @@ export default function BlogPostItems({
           content={BlogPostContent}
         >
           <article>
-            <div
-              className='blog-list-item'
-              // href={`/${BlogPostContent.frontMatter.slug}`}
-            >
+            <div className='blog-list-item'>
               <div className='blog-list-img-wrap'>
-                <img
-                  className='blog-list-img'
-                  src={`${BlogPostContent.frontMatter.image}`}
-                />
+                <a href={`/${BlogPostContent.frontMatter.slug}`}>
+                  <img
+                    className='blog-list-img'
+                    src={`${BlogPostContent.frontMatter.image}`}
+                  />
+                </a>
               </div>
               <div className='blog-list-content'>
-                <h3 className='blog-list-content-title'>
-                  {BlogPostContent.frontMatter.title}
-                </h3>
-                <p className='blog-list-content-desc'>
-                  {BlogPostContent.metadata.description}
-                </p>
+                <a
+                  style={{
+                    textDecoration: "none",
+                  }}
+                  href={`/${BlogPostContent.frontMatter.slug}`}
+                >
+                  <h3 className='blog-list-content-title'>
+                    {BlogPostContent.frontMatter.title}
+                  </h3>
+                </a>
+                <a
+                  style={{
+                    textDecoration: "none",
+                  }}
+                  href={`/${BlogPostContent.frontMatter.slug}`}
+                >
+                  <p className='blog-list-content-desc'>
+                    {BlogPostContent.metadata.description}
+                  </p>
+                </a>
                 <div>
                   <div className='blog-list-tag-list'>
                     <div className='blog-list-tag-list'>
