@@ -45,6 +45,7 @@
 
  /* 블로그 커스텀 css START */
 .blog-list-item {
+  --ifm-col-width: 100% !important;
   width: 100% !important;
   display: flex !important;
   /* flex-direction: row !important; */
@@ -90,6 +91,7 @@
 
 .blog-list-content{
   max-width: 658px;
+  --ifm-col-width: 100% !important;
   width: 100% !important;
   display: flex !important;
   flex-direction: column !important;
