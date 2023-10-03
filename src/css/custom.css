@@ -16,6 +16,7 @@
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
   --base:black;
+  --center-back:rgb(245 245 245);
 }
 :root p{
   font-size: 17px;
@@ -39,6 +40,7 @@
   --ifm-background-color: #255565;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
   --base:#e3e3e3;
+    --center-back:rgb(50 50 50);
 }
 
 
@@ -185,6 +187,18 @@
     transition: 0.3s all ease-in-out !important;
 
 
+}
+
+#center-compontent{
+  text-align: center;
+  font-weight: bold;
+  background-color: var(--center-back);
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-bottom: 20px;
+}
+#center-compontent p{
+  margin: 0;
 }
 
 

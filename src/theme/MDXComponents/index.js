@@ -10,6 +10,9 @@ import MDXImg from '@theme/MDXComponents/Img';
 import Admonition from '@theme/Admonition';
 import Mermaid from '@theme/Mermaid';
 import { EImage } from '@site/src/components/Custom/external-image';
+import { Center } from '@site/src/components/Custom/center-text';
+import { GIF } from '@site/src/components/Custom/GIF';
+
 const MDXComponents = {
   head: MDXHead,
   code: MDXCode,
@@ -27,5 +30,7 @@ const MDXComponents = {
   admonition: Admonition,
   mermaid: Mermaid,
   EImage,
+  Center,
+  GIF
 };
 export default MDXComponents;
