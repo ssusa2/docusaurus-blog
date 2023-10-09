@@ -8,8 +8,114 @@ description: 값이 변하지 않는 값들을 한 곳에 모와서 사용할 �
 draft: true
 ---
 
-값이 변하지 않는 값들을 한 곳에 모와서 사용할 수는 없을까?
+값이 변하지 않는 값들을 한 곳에 모와서 사용할 수는 없을까? 타입스크립트의 Enums를 사용해보자.
 
 <!--truncate-->
 
 <Image src='/img/Enums.png' alt='Enums 이미지' />
+
+## Enums
+
+**열거** 의 뜻을 가지고 있는 enum(이넘)은 **변하지 않는 값(상수)들의 집합을 정의**할 수 있도록 해준다.
+타입스크립트의 enum은 **숫자형 이넘**과 **문자형 이넘**을 지원하며, enum 안에 값들을 **멤버**라고 부른다
+
+여기 enum의 개념을 이해하기 위해 **자동차회사들의 이름을 열거**한 **CarCompany**라는 이넘을 선언했다.
+
+자동차회사의 이름은 변하지 않고, 영문으로 변환했을때, 길어지기에 이번 예시에 아주 잘 맞다고 생각하여 자동차회사로 예를 들려고 한다.
+
+```ts
+enum CarCompany {
+  hyundai,
+  volkswagen,
+  tesla,
+  ssangyong,
+  mercedes,
+  porsche,
+}
+```
+
+<img src='/img/enums-data.png' alt='Enums 이미지' />
+
+---
+
+먼저 숫자형 이넘에 대해 알아보자.
+
+## 숫자형 이넘
+
+숫자형 이넘은 초기 값을 주지 않은 상태에서는 아래 처럼 **0부터 차례대로 1씩 증가**하는데 이를 **자동-증가(Auto-Incrementing)**라고한다.
+
+```ts
+enum CarCompany {
+  hyundai, // = 0
+  volkswagen, // = 1
+  tesla, // = 2
+  ssangyong, // = 3
+  mercedes, // = 4
+  porsche, // = 5
+}
+```
+
+<img src='/img/enums-data2.png' alt='Enums 이미지2' />
+
+hyundai를 4, ssangyong을 11로 초기화한다면 어떻게 될까?
+
+```ts
+enum CarCompany {
+  hyundai = 4, // = 4
+  volkswagen, // = 5
+  tesla, // = 6
+  ssangyong = 11, // = 11
+  mercedes, // = 12
+  porsche, // = 13
+}
+```
+
+시작 값인 **4**부터 차례대로 +1씩 증가하고, 11로 초기화된 ssangyong부터 다시 +1씩 증가하는 걸 볼 수 있다.
+
+### 사용하는 방법
+
+사용하는 방법은 선언한 이넘의 멤버 이름을 통해 사용할 수 있습니다.
+
+```ts
+enum CarCompany {
+  hyundai = 0,
+  volkswagen,
+  tesla,
+  ssangyong,
+  mercedes,
+  porsche,
+}
+
+const ssangyongIndex = CarCompany.ssangyong
+```
+
+먼저 문자형 이넘에 대해 알아보자.
+
+## 문자형 이넘
+
+문자형 이넘은 숫자형 이넘과 런타임 동작과정에서 차이가 있어,
+
+```ts
+enum CarCompany {
+  HD,
+  VW,
+  TS,
+  SY,
+  MB,
+  PS,
+}
+```
+
+---
+
+## 숫자형 이넘
+
+이넘은 변하지 않는 값들의 집합을 정의할 수 있다고 했다.
+
+자동차회사의 이름은 변하지 않고, 영문으로 변환했을때, 길어지기에 이번 예시에 아주 잘 맞다고 생각하여 자동차회사로 예를 들려고 한다.
+
+영어를 정말 잘 안다거나 차에 관심이 많은 사람이 아닌 경우에 하드코딩으로 아래 있는 값들을 타이핑한다면?
+
+높은 경우로 스펠링이 틀리는 휴면에러가 발생할 것이라고 생각한다. 이런 경우에 이넘을 사용하면 이런 **휴면에러를 줄일 수 있다.**
+
+숫자형 이넘과 문자형 이넘의 차이는 크게 자동-증가(Auto-Incrementing)와 런타임, 리버스 매핑(Reverse Mapping)로 나누어볼 수 있다.
