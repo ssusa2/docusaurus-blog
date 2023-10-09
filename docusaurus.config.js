@@ -86,14 +86,14 @@ const config = {
           customCss: require.resolve('./src/css/custom.css'),
         },
       }),
-      {
-        sitemap: {
-          changefreq: 'weekly',
-          priority: 0.5,
-          ignorePatterns: ['/tags/**'],
-          filename: 'sitemap.xml',
-        },
-      },
+      // {
+      //   sitemap: {
+      //     changefreq: 'weekly',
+      //     priority: 0.5,
+      //     ignorePatterns: ['/tags/**'],
+      //     filename: 'sitemap.xml',
+      //   },
+      // },
     ],
   ],
 

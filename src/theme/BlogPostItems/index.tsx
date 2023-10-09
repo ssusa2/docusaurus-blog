@@ -21,6 +21,7 @@ export default function BlogPostItems({
   items,
   component: BlogPostItemComponent = BlogPostItem,
 }: Props): JSX.Element {
+  console.log(items)
   return (
     <>
       {items?.map(({ content: BlogPostContent }) => (
