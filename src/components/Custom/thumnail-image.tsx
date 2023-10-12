@@ -3,7 +3,7 @@ import React from "react"
 /**
  * 썸네일 이미지 컴포넌트
  */
-export const Image = ({ src, alt }) => {
+export const ThumNailImage = ({ src, alt }) => {
   return (
     <img
       style={{
