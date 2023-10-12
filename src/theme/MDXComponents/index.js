@@ -11,6 +11,7 @@ import Admonition from '@theme/Admonition';
 import Mermaid from '@theme/Mermaid';
 import { EImage } from '@site/src/components/Custom/external-image';
 import { ThumNailImage } from '@site/src/components/Custom/thumnail-image';
+import { Q } from '@site/src/components/Custom/Q';
 import { Center } from '@site/src/components/Custom/center-text';
 import { GIF } from '@site/src/components/Custom/GIF';
 
@@ -33,6 +34,7 @@ const MDXComponents = {
   EImage,
   ThumNailImage,
   Center,
-  GIF
+  GIF,
+  Q
 };
 export default MDXComponents;
