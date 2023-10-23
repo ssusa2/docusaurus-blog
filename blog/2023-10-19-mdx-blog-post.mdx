@@ -1,14 +1,120 @@
 ---
-slug: bar-chart
-title: 차차차 차트를 그립시다.( Bar Chart )
+slug: never
+title: never 타입, 최대한 이해해보기
 authors: [suin]
-tags: [chart, Ready]
-image: /img/bar-chart.png
+tags: [never, TS]
+image: /img/never.png
 draft: true
 ---
 
-프론트 개발을 하다보면 언젠가 한번은 만나게 될 운명.. 들어갈때는 내 마음이였지만, 나올때는 아니였다...
+절대 마지막에 도달하지 않는 타입..? 최대한 이해해보자..!
 
 <!--truncate-->
 
-<ThumNailImage src='/img/bar-chart.png' alt='bar-chart 이미지' />
+<ThumNailImage src='/img/never.png' alt='never 이미지' />
+
+## never
+
+never 타입은 절대 반환되지 않는 타입을 의미한다.
+함수의 마지막에 도달하지 않는 타입, 항상 오류를 출력하거나 리턴 값을 내보내지 않는 타입을 뜻한다.
+
+## 왜 써야하는 가??
+
+**모든 경우의 예외처리를 진행했다**라는 의미를 전달할 수 있다. 다른 개발자나 컴파일러에게 의미를 명확히 전달할 수 있다. 라는 이유 빼고는 이해를 못하겠다.
+
+잘 모르겠다.. never에 대한 여러 글을 읽었는데 왜 써야하는지..
+
+never를 사용할 때 유용한 상황이 크게 무한 루프에 빠지는 상황, switch 상황 예외 처리로 블로그 글이나 핸드북에서도 이 예제를 주로 사용하고 있다.
+
+먼저 무한 루프 상황을 보자.. (이거 무슨 상황인지 모르겠다.)
+
+### 무한 루프에 빠지는 상황
+
+무한 루프 상황은 주로 아래 코드를 예시로 든다.
+
+```ts
+function throwError(message: string): never {
+  throw new Error(message)
+}
+
+function infiniteLoop(): never {
+  while (true) {
+    // 무한 루프
+  }
+}
+```
+
+함수가 **never 타입을 반환하는 것은 항상 에러를 던지거나 무한루프 상황에 빠진 것을 의미하고, 그에 맞는 반환 타입으로 사용**된다고 한다.
+
+(끄덕끄덕) 오케이.. 예시가 이해가 안되는 것은 아니다.
+
+#### 이해가 안가는점
+
+<Center>
+
+<p>🤔 항상 에러를 던지는 상황이 오나..? </p>
+<p>🤔 애초에 무한루프에 빠지면 안되는거 아냐..? </p>
+
+</Center>
+
+코드를 따라쳐봐도, 블로그 글을 봐도 현재 나의 타입스크립트 실력으로는 해석하기 힘든 부분이 많았고, 다른 글에서는 상황에 처하기도, 입문자들이 이해하기가 힘들 것이라는 글이 많았다..
+
+<br />
+..이해하고 싶었는데..ㅜ
+
+정확하지만 내가 내린 결론은 never를 사용함으로 특정 값이 절대 반환되지 않아야 할 값이라는 것이라는 것을 알릴 수 있다..? 이 정도..가 되겠다.
+
+### switch 문 상황
+
+또 다른 예로 switch 문 상황에서의 예시가 많이 있었다.
+
+```ts
+function handleColor(color: "red" | "green" | "blue") {
+  switch (color) {
+    case "red":
+      console.log("You chose red")
+      break
+    case "green":
+      console.log("You chose green")
+      break
+    case "blue":
+      console.log("You chose blue")
+      break
+    default:
+      const assertNever: never = color // 모든 케이스 다룬 후에 사용
+      console.log(`Unhandled color: ${assertNever}`)
+  }
+}
+```
+
+주로 위 상황에서의 예를 많이 들었는데 이 상황이 제일 이해가 잘 가지만.. 완벽하게는 잘 모르겠다.
+
+이유는 위 코드를 인자를 **"yellow"**로 넘겨서 실행하면 never에 대한 에러가 나타나는 게 아니다.
+
+```ts
+Argument of type '"yellow"' is not assignable to parameter of type '"red" | "green" | "blue"'.
+```
+
+넘긴 인자가 맞지 않는 값이라는 에러가 뜬다.
+
+**color:"red" | "green" | "blue"** 이 부분을 **string** 으로 변경하고 나면
+
+```ts
+Type 'string' is not assignable to type 'never'
+```
+
+never에 string타입을 할당할 수 없다고 에러가 뜬다.
+
+여기서 never는 절대 나와서는 안될 값이다 라고 정해주는 진짜 경고의 경고의 경고라는 느낌이라고 이해했다. 제발 이해한게 맞기를..
+
+## 아직도 모르겠다.
+
+아직도 모르겠다.. 유니온과도 관련이 있는 것으로 보이던데 타입스크립트를 더 공부해서 다시 돌아오도록 해보자..
+
+<Center>
+
+<p>미래의 나야.. 부탁해.. 꼭 이해한 다음에 돌아와서 정리해줘 </p>
+
+</Center>
+
+[예시 코드 보러가기](https://www.typescriptlang.org/play?#code/GYVwdgxgLglg9mABFAFgJzgdwKJo2gCgFsBTAZzIEMBzEgLkTKjRjGoEoGwSA3EtRAG8AUImTosibpkS58xclVrthAX2HDQkWAkStgrGFBIAZOHAAOBTlN78hoxJhQwANiUQFmIEuwdixAHpAxEAWbsAdVcRAC47AEFXHdXVNcGh4JBRKMAATdwBhOFc4Qgh8woYAIjQSTLLEAB9EMupKkjAa+rKAI1cfMr8RMTJMIwgUT2KCtD7HMQhKMg8KqrK6aYDisDJ8kgA6AuoCMoBNOBBEEbh5xErqlQCAjsrKAGtV2cvG5taVu5mETfddnB9kcTmcUBcPE0SC1eqsxA8SM9XnMFl0et8fut-js9gdjqdzpc0SRYT9EAikXdMiRgJQQK4oBi7lioIg5vM0FAAHJ2NBcXmIAC8ZxKAmCiEAFV2AA5bEIAAecALuOAEqHEIATpsANx2IQAja4AF0cQgBqBwCVY3CRRstoD9gADACqYHSWXcmRFEwYABJBOz+NzeaoLbdEAkNHbsiQ8hMDgBPEiuAqYXoAbiAA)
