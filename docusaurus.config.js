@@ -8,16 +8,15 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: "Dulumungsil",
   // tagline: '두루뭉실 - 특별히 모나거나 튀지 않고 골고루 ',
+  url: 'https://dulumungsil.netlify.app/',
   titleDelimiter: '-', // Defaults to `|`
   favicon: 'img/favicon.ico',
   themes: ['@docusaurus/theme-live-codeblock'],
   // Set the production url of your site here
-  url: 'https://dulumungsil.netlify.app/',
+
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
-  trailingSlash:false,
-
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'ssusa2', // Usually your GitHub org/user name.
@@ -30,8 +29,8 @@ const config = {
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: "ko",
+    locales: ["ko"],
   },
   presets: [
     [
@@ -49,18 +48,18 @@ const config = {
         blog: {
           blogDescription:"특별히 모나거나 튀지 않고 골고루 하려고 노력합니다.",
           routeBasePath: '/', 
-          feedOptions: {
-            type: 'all',
-            copyright: `Copyright © ${new Date().getFullYear()} Facebook, Inc.`,
-            createFeedItems: async (params) => {
-              const {blogPosts, defaultCreateFeedItems, ...rest} = params;
-              return defaultCreateFeedItems({
-                // keep only the 10 most recent blog posts in the feed
-                blogPosts: blogPosts.filter((item, index) => index < 10),
-                ...rest,
-              });
-            },
-          },
+          // feedOptions: {
+          //   type: 'all',
+          //   copyright: `Copyright © ${new Date().getFullYear()} Facebook, Inc.`,
+          //   createFeedItems: async (params) => {
+          //     const {blogPosts, defaultCreateFeedItems, ...rest} = params;
+          //     return defaultCreateFeedItems({
+          //       // keep only the 10 most recent blog posts in the feed
+          //       blogPosts: blogPosts.filter((item, index) => index < 10),
+          //       ...rest,
+          //     });
+          //   },
+          // },
           
           // blogSidebarTitle: 'All posts',
           blogSidebarCount: 0,
