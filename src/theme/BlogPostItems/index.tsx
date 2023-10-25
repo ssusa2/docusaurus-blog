@@ -34,6 +34,10 @@ export default function BlogPostItems({
               <div className='blog-list-img-wrap'>
                 <a href={`/${BlogPostContent.frontMatter.slug}`}>
                   <img
+                    loading='eager'
+                    size='(max-width: 668px)'
+                    width='280'
+                    height='280'
                     className='blog-list-img'
                     src={`${BlogPostContent.frontMatter.image}`}
                   />
