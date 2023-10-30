@@ -14,6 +14,7 @@ import { ThumNailImage } from '@site/src/components/Custom/thumnail-image';
 import { Q } from '@site/src/components/Custom/Q';
 import { Center } from '@site/src/components/Custom/center-text';
 import { GIF } from '@site/src/components/Custom/GIF';
+import { Image } from '@site/src/components/Custom/internal-image';
 
 const MDXComponents = {
   head: MDXHead,
@@ -35,6 +36,7 @@ const MDXComponents = {
   ThumNailImage,
   Center,
   GIF,
-  Q
+  Q,
+  Image
 };
 export default MDXComponents;
