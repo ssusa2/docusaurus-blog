@@ -15,6 +15,7 @@ import { Q } from '@site/src/components/Custom/Q';
 import { Center } from '@site/src/components/Custom/center-text';
 import { GIF } from '@site/src/components/Custom/GIF';
 import { Image } from '@site/src/components/Custom/internal-image';
+import { RevealTest } from '@site/src/components/Custom/reveal';
 
 const MDXComponents = {
   head: MDXHead,
@@ -37,6 +38,7 @@ const MDXComponents = {
   Center,
   GIF,
   Q,
-  Image
+  Image,
+  RevealTest
 };
 export default MDXComponents;

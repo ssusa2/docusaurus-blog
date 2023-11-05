@@ -11,7 +11,6 @@ const config = {
   url: 'https://dulumungsil.netlify.app/',
   titleDelimiter: '-', // Defaults to `|`
   favicon: 'img/favicon.ico',
-  themes: ['@docusaurus/theme-live-codeblock'],
   // Set the production url of your site here
 
   // Set the /<baseUrl>/ pathname under which your site is served
