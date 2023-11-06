@@ -11,9 +11,9 @@ import "../../css/reveal.css"
  * 글자 중앙처리 및 백그라운드 색상
  */
 export const RevealTest = ({ children }) => {
-  React.useEffect(() => {
-    Reveal.initialize()
-  }, [])
+  // React.useEffect(() => {
+  //   Reveal.initialize()
+  // }, [])
 
   return (
     <div className='reveal'>
