@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: "Dulumungsil",
   // tagline: '두루뭉실 - 특별히 모나거나 튀지 않고 골고루 ',
-  url: 'https://dulumungsil.netlify.app/',
+  url: 'https://dulumungsil.com/',
   titleDelimiter: '-', // Defaults to `|`
   favicon: 'img/favicon.ico',
   // Set the production url of your site here
