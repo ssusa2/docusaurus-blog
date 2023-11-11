@@ -9,6 +9,7 @@ export const Image = ({ url, title }) => {
       <img
         style={{
           width: "100%",
+          objectFit: "cover",
         }}
         src={`${url}`}
       />

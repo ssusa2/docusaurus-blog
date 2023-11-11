@@ -8,6 +8,7 @@ export const ThumNailImage = ({ src, alt }) => {
     <img
       style={{
         width: "100%",
+        objectFit: "cover",
       }}
       alt={`${alt}`}
       src={`${src}`}

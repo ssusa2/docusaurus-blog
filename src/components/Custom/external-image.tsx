@@ -13,6 +13,7 @@ export const EImage = ({ url, title, link }) => {
       <img
         style={{
           width: "100%",
+          objectFit: "cover",
         }}
         src={`${url}`}
       />
