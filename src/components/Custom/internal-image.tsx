@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 
 /**
  * 내부이미지 첨부시 사용하는 컴포넌트, 이미지 소개 글 있음
