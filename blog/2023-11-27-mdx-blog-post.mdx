@@ -1,0 +1,36 @@
+---
+slug: appState
+title: AppState
+authors: [suin]
+tags: [RN, Ready]
+image: /img/appState.png
+draft: true
+---
+
+React-Native 환경에서 앱의 상태(활성/비활성)를 파악하는 방법을 알아보자.
+
+<!--truncate-->
+
+<ThumNailImage src='/img/appState.png' alt='appState 이미지' />
+
+React-Native에서는 [AppState](https://reactnative.dev/docs/appstate)라는 메서드를 제공하여, 활성(Foreground) 되어 있는지, 비활성(Background) 화 상태인 지 알려주며 그 상태가 변경될 때마다 알 수 있게 해준다.
+
+주로 푸시 알림(FCM)이나 메뉴에서 앱으로, 앱에서 외부로 나갈 때의 상태를 체크하여 특정 로직을 동작하기 위해서 사용된다.
+
+## 앱 상태
+
+앱의 상태는 아래와 같다.
+
+- **active**
+
+  앱이 활성화임을 뜻한다.
+
+- background
+
+  앱이 비활성화임을 뜻한다.
+
+  - 다른 앱에 있거나
+  - 홈 메뉴에 있거나
+  -
+
+- inactive (only IOS)
