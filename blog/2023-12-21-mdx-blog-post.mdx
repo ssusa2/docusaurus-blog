@@ -1,0 +1,173 @@
+---
+slug: PickandOmit
+title: 잘 만든 타입 하나, 여러 타입 안부럽다.
+authors: [suin]
+tags: [TS, Pick, Omit]
+image: /img/commonType.png
+---
+
+타입스크립트의 유틸리티 타입인 Omit과 Pick를 사용해서 데이터 목록 조회 시, 필요한 파라미터 타입을 만들어봤다.
+
+<!--truncate-->
+
+<ThumNailImage src='/img/commonType.png' alt='commonType 이미지' />
+
+전에 작성했던 [Omit에 대해 공부한 글](2023-09-29-mdx-blog-post.mdx)과 [Pick에 대해 공부한 글](2023-09-30-mdx-blog-post.mdx)를 활용해서 데이터 목록 조회 시, 필요한 파라미터를 생성해보았다.
+
+다시 한번 간단하게 Pick과 Omit를 사용하는 방법을 소개하자면.
+
+```ts
+interface Person {
+  name: string
+  age: number
+  address: string
+}
+```
+
+## Pick
+
+**특정 타입에서 원하는 타입을 선택하여 선택한 타입으로 새로운 타입을 만들 수 있다.**
+
+`Pick <가져올 타입, "특정 타입 키(복수 가능)">`
+
+```ts
+type PersonNameAndAge = Pick<Person, 'name' | 'age'>
+
+const personInfo: PersonNameAndAge = {
+  name: 'John',
+  age: 30,
+}
+```
+
+---
+
+## Omit
+
+**특정 타입에서 원하는 타입을 빼고 나머지 타입을 가져올 수 있다**.
+
+`Omit <가져올 타입, "특정 타입 키(복수 가능)">`
+
+```ts
+type PersonWithoutAddress = Omit<Person, 'address'>
+
+const personWithoutAddress: PersonWithoutAddress = {
+  name: 'Alice',
+  age: 25,
+}
+```
+
+---
+
+## 공통 목록 조회 타입 생성하기
+
+목록조회 시, 자주 사용하는 값들의 타입인 **listParamsType** 를 생성했다.
+
+```ts
+export interface listParamsType {
+  pg: number
+  pgSz: number
+  sordFld: 'rgstYmd' | 'modYmd'
+  sordMetd: 'DESC' | 'ASC'
+  schTp: number
+  schLangTp: '1' | '2'
+}
+```
+
+**listParamsType** 만 사용해서 목록을 조회할 수 있으면 좋겠지만, 검색어가 필요하거나 키워드를 선택하여 조회할 수 있는 기능이 추가된다면 저대로 사용하기에 어려움이 생겨 새로운 타입을 만들고 했었다.
+
+Pick과 Omit를 활용해서 하나의 공통 타입을 바라보게 하여 유지보수가 용이할 수 있게 해보자.
+
+### 상황 1
+
+**블로그 목록조회 시, listParamsType의 schLangTp(언어코드)는 필요하지않고 schTxt(검색어)값이 필요하다.**
+
+상황 1에서는 기존 타입에서 하나의 타입이 제외되기에 Omit이 적합해보인다. 바로 적용해보자.
+
+```ts
+interface blogListParamsType extends Omit<listParamsType, 'schLangTp'> {
+  schTxt: string
+}
+```
+
+확장에 용이한 interface와 원하는 값을 생략할 수 있는 Omit를 사용해서 schLangTp은 제외하고 schTxt는 타입에 추가했다.
+
+```ts
+const blogListParams: blogListParamsType = {
+  pg: 1,
+  pgSz: 10,
+  sordFld: 'rgstYmd',
+  sordMetd: 'DESC',
+  schTp: 1,
+  schTxt: '',
+}
+```
+
+<br />
+
+---
+
+### 상황 2
+
+**banner 목록조회 시, listParamsType의 pg와 pgSz를 제외한 값은 필요하지 않다.**
+
+```ts
+interface bannerListParamsType extends Pick<listParamsType, 'pg' | 'pgSz'> {}
+```
+
+Pick를 사용해서 listParamsType에서 pg와 pgSz만 사용할 수 있다.
+
+```ts
+const bannerListParams: bannerListParamsType = {
+  pg: 1,
+  pgSz: 10,
+}
+```
+
+:::note
+
+Pick은 기존에 사용하던 타입의 수가 많을 때, Omit에 비해 용이하지 않다.<br/>
+Omit은 기존 타입에서 제외할 타입을 빼고 전부 다 사용하지만,
+Pick은 사용할 타입을 모두 선택해줘야하기 때문이다.
+:::
+
+<br />
+
+---
+
+### 상황 3
+
+**post 목록조회 시, listParamsType에 schTpDtl(구분상세), schFld(분야), schTxt(검색어) 값이 추가로 필요하다.**
+
+```ts
+interface postListParamsType extends listParamsType {
+  schTpDtl: number
+  schTxt: string
+  schFld: string
+}
+```
+
+제외나 선택할 필요 없이 listParamsType의 모든 값이 필요하고 추가로 다른 타입 값이 필요한 상황이므로, interface의 extends만을 사용했다.
+
+```ts
+const postListParams: postListParamsType = {
+  pg: 1,
+  pgSz: 10,
+  sordFld: 'rgstYmd',
+  sordMetd: 'DESC',
+  schTp: 1,
+  schTpDtl: 1,
+  schTxt: '',
+  schFld: '',
+}
+```
+
+<br />
+
+---
+
+## 정리
+
+Pick은 여러 조건을 넘겨서 데이터를 호출해야하는 목록조회에서는 적합하지 않다고 생각이 들었다.
+따라서 interface와 Omit를 사용하여 특정 값을 제외하고 불러와 추가하거나 interface의 extends를 사용하여 값을 추가해주는 형태로 사용했다.
+
+[예시 코드 보러가기](https://www.typescriptlang.org/play?#code/PTAEFEA8EMFsAcA2BTUB5WBLALqAZKAAqYDGA1gFCYB22yATgGbQmqEMDOA9taAN4VQoanGQAuUB2z0aAc0Ghos8cICusAEYMF0ACa76yDhwlSZ1eQF8KFEEVKVsAT3htOPAHKiAgtV3flUABee3IAHnZ6bmoAGlAAchFYZHjQAB8EpRSAPhsSHilQVyieAElqRi4JSOivZN9-QJCBISSVeIApLgALaniYnWUJAGYABgHrWzAMHApnVyJ3agB1HG6uVWxvfUNjYPQsbAiluPi9AyMOeNyKfOpC4ujV7HXN7YvjaqXn162dy-2LWEogk8W8iFIKQGQiyEgATABWCY2ECotHojGYjGgCFSQjQehwDhQOBIVBYimUqkUmw0OhMFioXHYfGE2AcAAqLlQQPgsgk1HUWnoCj5AGUAF4CoXaITcei6ABiiF0oPosikAE1YLpUhl4rAuLptbqFPLdABZZDYVUJAAi4DFAGE9QlvM74maSN0OfBpZpZZJvQAZaAWX2ggCMrvicM9kzszNZRJJCBQoA8aAAdJGDrM6QxmKxQBpEFxZMHMHiCUSuQtkJA6H4OHmjkma+y68hThwQ2HZL7rvwvT7G6ZpHIKJM7oVS+XK9W2SYS2WK1WWR3OdzAaL+aBI9CirJJRJI+MzVwFcrbfF1Vqdf0LwqrTbQQ6PYfez6-fvP96OWOCSPgmYDtkuqZkhm2ZwqElAFgyxYaGG1AMAuG5Ll2oANk2ugtsQ4RgbW3KnHyMbihKQ58NOBS4Eh1AofQaHJuyEh0QxTGbphzS7qeh7kae54gTi67McSMBpqgmZZsMoDwUWqDYcgzZULQhaMkUXBSBxGHbopzbCYuRELECX6+na2CIP6wojgB2DjuY8hyt6172ZO1H3Lg8Cadg2lEhIXlaSJnHbtxQh8rxu4nvu55ypeSoqmqGrYCaj6xc+1o3u+Lp-t+EVOd0obhn6ABEkbFTlZkWXlQajnZQE5S59VTjYQA)
