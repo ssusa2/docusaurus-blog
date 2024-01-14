@@ -1,11 +1,11 @@
-import React from "react"
-import clsx from "clsx"
-import { useBlogPost } from "@docusaurus/theme-common/internal"
-import EditThisPage from "@theme/EditThisPage"
-import TagsListInline from "@theme/TagsListInline"
-import ReadMoreLink from "@theme/BlogPostItem/Footer/ReadMoreLink"
+import React from 'react'
+import clsx from 'clsx'
+import { useBlogPost } from '@docusaurus/theme-common/internal'
+import EditThisPage from '@theme/EditThisPage'
+import TagsListInline from '@theme/TagsListInline'
+import ReadMoreLink from '@theme/BlogPostItem/Footer/ReadMoreLink'
 
-import styles from "./styles.module.css"
+import styles from './styles.module.css'
 
 export default function BlogPostItemFooter(): JSX.Element | null {
   const { metadata, isBlogPostPage } = useBlogPost()
@@ -25,12 +25,12 @@ export default function BlogPostItemFooter(): JSX.Element | null {
   return (
     <footer
       className={clsx(
-        "row docusaurus-mt-lg",
+        'row docusaurus-mt-lg',
         isBlogPostPage && styles.blogPostFooterDetailsFull
       )}
     >
       {tagsExists && (
-        <div className={clsx("col", { "col--9": truncatedPost })}>
+        <div className={clsx('col', { 'col--9': truncatedPost })}>
           <TagsListInline tags={tags} />
         </div>
       )}
@@ -43,8 +43,8 @@ export default function BlogPostItemFooter(): JSX.Element | null {
 
       {truncatedPost && (
         <div
-          className={clsx("col text--right", {
-            "col--3": tagsExists,
+          className={clsx('col text--right', {
+            'col--3': tagsExists,
           })}
         >
           <ReadMoreLink blogPostTitle={title} to={metadata.permalink} />
