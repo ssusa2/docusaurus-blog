@@ -1,0 +1,118 @@
+---
+slug: codeTour
+title: 코드 정글 속에서 살아남기
+authors: [suin]
+tags: [codeTour, Ready]
+image: /img/codeTour.png
+draft: true
+---
+
+코드를 작성하다 보면 수많은 파일들을 돌아다니게 됩니다. 그러다 보면, 어느새 작업해야 할 위치와 파일을 까먹고 어디였지? 파일 이름이 뭐였지? 하는 경우가 분명 있었을 것이라고 생각합니다. 코드 투어는 코드를 작성해야 할 곳에 표시를 남겨 코드 정글 속에서 길을 잃지 않게 해줄 것입니다. 코드 투어를 사용해봅시다!
+
+<!--truncate-->
+
+<ThumNailImage src='/img/codeTour.png' alt='cleancode 이미지' />
+
+[codeTour]("https://github.com/microsoft/codetour")는 vscode의 익스텐션입니다.
+
+코드투어는 표시하고 싶은 부분에 마커를 남겨 어떤 로직의 순서나 이유를 설명 혹은 기록할 때 사용하기에 좋습니다.
+
+## 시작하기
+
+### 코드 투어 설치
+
+먼저 vscode의 익스텐션에서 아래의 이미지와 같은 익스텐션을 설치해줍니다.
+
+<Image url='/img/codeTour-data1.png' title='codeTour' />
+
+### 투어 생성
+
+그 후에,
+
+vscode의 왼쪽 하단 부분의 **CODETOUR** 부분을 클릭하여 투어를 시작할 준비를 합니다.
+
+<Image url='/img/codeTour-data2.png' title='codeTour 시작하기 2' />
+
+`Record Tour` 버튼이나 위의 `+` 버튼을 눌러 투어를 시작합니다.
+
+### 투어의 제목을 지어보자
+
+<Image url='/img/codeTour-data3.png' title='codeTour 시작하기 3' />
+
+그럼 **투어의 제목**을 입력하는 부분이 나오고 원하는 대로 투어의 제목을 지어줍니다.(ex: 작업할 기능, 복잡한 로직 순서...)
+
+저는 "코드 투어 길잡이" 라는 제목으로 지어줬습니다.
+
+### 투어 버전을 Git과 연결
+
+<Image url='/img/codeTour-data4.png' title='codeTour 시작하기 4' />
+
+- **None**
+
+  어떠한 참조와도 연결되어있지 않습니다. 브랜치를 체크아웃하거나 커밋을 남긴 후에도 어디서나 접근할 수 있습니다.
+
+- **Current Branch**
+
+  현재의 브랜치에 연결, 다른 브랜치에서는 읽기 전용
+
+- **Current Commit**
+
+  현재의 커밋에 연결, 다른 곳에서는 읽기 전용
+
+- **Tag**
+
+  태그 부분은 잘 안써봐서 모르겠다. 추가로 공부해야겠다..
+
+---
+
+## 투어 기록하기
+
+여행지의 루트를 기록하듯이, 코드 투어로 코드가 진행해야할 루트를 기록합니다.
+
+파일의 맨 왼쪽 라인 넘버에 마우스를 올려봅니다. `+` 버튼이 생긴게 보인다면 잘되고 있습니다.
+
+### 스텝 추가
+
+<Image url='/img/codeTour-data5.png' title='codeTour 시작하기 5' />
+
+`+`버튼을 누르면 스텝의 정보를 입력할 수 있는 입력칸이 나옵니다. 원하는 스텝의 정보를 입력하면 됩니다.
+
+### 제목 설정
+
+따로 제목을 작성하지 않아도 `#1 - ~` 이런 식으로 나오지만 `### 제목` 을 사용하면 아래처럼 스텝 옆에 설정한 제목이 나오게 됩니다.
+
+<Image url='/img/codeTour-data6.png' title='codeTour 시작하기 6' />
+
+<Image url='/img/codeTour-data6-1.png' title='투어 마커가 생성된 모습' />
+
+### 텍스트를 스텝으로 설정
+
+텍스트를 드래그 하고 `+`버튼을 누르면 드래그한 텍스트 내용 전체가 스텝으로 설정됩니다.
+위에서 아래로 드래그하고 스텝에 추가하면 된다.
+
+<Image url='/img/codeTour-data7.png' title='codeTour 시작하기 7' />
+
+결과는 다음과 같다.
+
+<Image
+  url='/img/codeTour-data7.gif'
+  title='codeTour 시작하기 7-1 텍스트 선택'
+/>
+
+---
+
+## 그 외의 기능
+
+코드 투어는 사용법이 매우 간단하다. 버튼 몇 개를 누르다보면 금방 익힐 수 있다.
+
+나는 주로 복잡한 로직의 순서나 코드를 수정해야할 때, 파일의 이름을 놓치거나 하는 경우가 있었는데 코드 투어를 사용하고 나서는 걱정이 없어졌다.
+
+단순히 스텝을 기록하는 것 말고도 [코드 블록]("https://github.com/microsoft/codetour?tab=readme-ov-file#code-blocks")을 스텝에 기록한다거나 [쉘 명령]("https://github.com/microsoft/codetour?tab=readme-ov-file#shell-commands")을 입력하여 실행할 수도 있는 것 같았다.
+
+또한, 투어를 생성하면 `.tour`폴더가 생성되고 json형태로 코드투어가 기록되는 걸 볼 수 있다.
+
+<Image url='/img/codeTour-data8.png' title='codeTour 시작하기 8' />
+
+json 파일을 직접 수정하여 내용을 변경할 수도 있다.
+
+코드투어를 잘 활용하면 협업 시, 코드가 분리되어 있는 로직을 찾거나 설명할 때 용이하지 않을까 싶다. 물론 코드투어를 깔아야되지만..ㅎ
