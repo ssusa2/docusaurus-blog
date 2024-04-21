@@ -1,0 +1,143 @@
+---
+slug: figma-token
+title: 디자인 토큰으로 소통하기
+authors: [suin]
+tags: [figma, Ready]
+image: /img/figma-token.png
+draft: true
+---
+
+Figma에서 디자인이 변경되었어도 코드를 수정하지 않아도 된다면 믿으시겠습니까?
+
+<!--truncate-->
+
+<ThumNailImage src='/img/figma-token.png' alt='figma-token 이미지' />
+<br />
+<br />
+
+## 디자인 토큰을 사용하기 앞서
+
+?? : 수인님 여기 디자인 수정되었어요.! X 10
+
+??? : 수인님 여기 색상 변경되었어요~
+
+<br />
+
+실무에서는 위와 같은 상황이 빈번하게 일어납니다. 클라이언트의 요구사항은 변하기 마련이고 그에 맞게 디자인과 기획이 수정되기 때문입니다.
+문구 수정, 색상 변경, 간격 수정, 테두리 수정 등등..
+
+글의 제목인 디자인 토큰으로 소통하기에 앞서 디자인 토큰을 사용하기 전에 회사에서 <strong>수정사항을 웹에 반영하기까지의 순서</strong>를 정의해볼까요?
+
+1. 수정 요청 -> 기획
+2. 기획 요건 정리 -> 디자인, 프론트 일정 산정
+3. 디자인 수정
+4. Figma에 수정된 부분 코멘트 -> 프론트에게 알림
+5. 프론트개발자 피그마 확인 후 -> 에디터에서 수정
+6. 변경알림 -> 디자인, 기획
+
+나눠보면 더 세밀하게 나눌 수도 있겠지만 크게 6단계로 보입니다.
+
+프론트 개발자가 색상을 수정한다고 생각해보겠습니다.
+
+Figma에 코멘트 달린 부분을 찾고, 변경된 사항을 확인하고, 에디터로 넘어가 현재의 값을 확인하고, 값을 수정합니다.
+
+값을 수정할 때, 새로운 변수 값을 생성해서 변경하거나 재사용하지 않고 그 부분에만 새로운 값을 적용합니다.
+
+프론트 개발자가 색상을 수정할 때, 대략 3~4단계 규모의 작업을 실행합니다.
+
+---
+
+## 디자인 토큰을 사용한다면 어떨까요?
+
+1. 디자이너가 토큰의 값을 변경한다.
+2. 값 변경을 소통채널에 올린다.
+3. 끝
+
+네. 프론트 개발자는 직접적으로 값을 수정하는 행동을 하지 않아도 됩니다.
+
+3~4 단계 규모의 작업을 0으로 만들었습니다.
+
+디자인 토큰을 사용하고 싶어지시나요?
+디자인 토큰이 무엇이고 왜 쓰는 지 같이 알아보겠습니다.
+
+---
+
+## 디자인 토큰
+
+디자인 토큰은 색상이나 간격 값처럼 디자인 요소에 이름을 부여하면서 디자인 요소의 의미나 명확한 개념을 알 수 있게 해줍니다.
+기존에도 Figma의 Local Styles 기능을 사용하여 디자인 토큰을 만들어 활용할 수 있었지만, 2023년 10월 쯤 Local Variables라는 기능이 추가되면서 토큰의 개념을 더 잘 사용할 수 있게되었습니다.
+
+왜 Local Styles 말고 Local Variables를 사용해야하는지는 글 밑부분에서 설명할 얘정이니 Local Variables의 기능을 먼저 살펴보자.
+
+---
+
+## Local Variables란?
+
+[공식문서 보러가기](https://help.figma.com/hc/en-us/articles/15145852043927-Create-and-manage-variables)
+
+특정한 디자인 요소를 변수처럼 사용하겠다라고 보시면 될 것같습니다.
+
+<Image url='/img/figma-token-data1.png' title='로컬 베리어블 알아보기 1' />
+
+위 이미지로 예를 들어보겠습니다.
+
+#FFFFFF라는 원시 값(white)을 white800 이라는 이름을 부여해 값을 사용하는 사람에게 하얀색이고 명도가 800이라고 알려줄 수 있습니다.
+
+이제 <strong>white800</strong>은 #FFFFFF에서 값을 유추할 수 있습니다. 하지만 어디서 어떻게 사용되는 지는 아직 알 수 없습니다.
+
+더 가보겠습니다.
+
+프로젝트 B에서는 #FFFFFF, 즉 white800를 프로젝트의 메인 색상으로 정했습니다. 그럼 이런식으로 변수의 이름을 부여합니다.<br/>
+
+<strong>Primary</strong>
+<br /> 이제 Primary는 프로젝트의 메인 색상이라는 이름을 가져 사람들에게 주요 색상이라는
+걸 알 수 있게 해줍니다.
+<br />
+하지만, 다시 Primary라는 이름만을 보고 어디서 사용되는지 어떤 색상인지는 알 수 없게
+되었습니다.
+
+<br />
+<br />
+
+<Image url='/img/figma-token-data10.png' title='로컬 베리어블 알아보기 2' />
+
+<strong>Button Primary White 800</strong>
+<br /> 어디서 사용하는지, 어떤 색상인지에 대한 변수명이 추가되면서 이 변수가 어디서
+사용되는지 명확하게 알 수 있게 되었습니다.
+
+Local Variables를 사용하게 되면 기존의 변수명을 다른 베리어블의 값으로 사용할 수 있게 됩니다.
+
+Core 값 #FFFFFF을 Primitive 값 white 800의 값으로 참조하고, white 800을 Semantic 단계를 통해 의미를 부여하고, Component의 값으로 Semantic 값을 참조하여 사용할 수 있게 됩니다.<br/>
+일종의 체인이라고 생각하시면 이해가 쉬울 것 같습니다.
+
+---
+
+## Figma에서 보기
+
+### 1. Variables 생성
+
+<Image url='/img/variables-1.png' title='figma 로컬 베리어블 만들기 ' />
+
+<strong> + Creat Variables</strong> 버튼을 눌러 값을 생성할 수 있습니다.
+
+### 2. 다른 Variables 사용하기
+
+<Image url='/img/variables-2.png' title='figma 다른 Variables 사용하기' />
+
+white 800를 선택하여 Primary 값으로 #FFFFFF가 아니라 white800를 사용할 수 있는 걸 볼 수 있다.
+
+### 3. Variables 추출해서 토큰으로 만들기
+
+Variables를 토큰으로 만드는 방법은 variables 형태를 json 형태로 변환한 다음에 그걸 [style-dictionary](https://amzn.github.io/style-dictionary/#/) 라는 라이브러리를 사용해서 css, scss, flutter, js(ts), 네이티브 언어 등으로 한번 더 변환해서 사용한다.
+
+[피그마에서 json으로 변환하는 플러그인]
+
+- [Tokens Studio for Figma](https://docs.tokens.studio/)
+  - 일부기능을 사용하려면 유료로 결제해야하지만 기능이 편리하고 깃헙,깃랩(외부주소 불가)의 레퍼지토리로 json파일을 업로드 할 수 있다.
+- [Design Tokens](https://www.figma.com/community/plugin/888356646278934516)
+- [varibles2json](https://www.figma.com/community/plugin/1253571037276959291)
+
+---
+
+※ Local Variables의 기능이 나온지 별로 안되서 원래는 텍스트와 테두리 관련한 값을 생성할 수 없었으나 이번에 [새로 추가](https://www.figma.com/release-notes/?title=Code%2520Connect%2520helps%2520map%2520more%2520closely%2520to%2520code%252C%2520variables%2520is%2520out%2520of%2520beta%2520and%2520adds%2520typography%2520and%2520gradients%252C%2520and%2520more)
+되었습니다.
