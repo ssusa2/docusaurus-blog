@@ -1,12 +1,12 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const lightCodeTheme = require('prism-react-renderer/themes/github')
+const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Dulumungsil",
+  title: 'Dulumungsil',
   // tagline: '두루뭉실 - 특별히 모나거나 튀지 않고 골고루 ',
   url: 'https://dulumungsil.com/',
   titleDelimiter: '-', // Defaults to `|`
@@ -28,8 +28,8 @@ const config = {
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: "ko",
-    locales: ["ko"],
+    defaultLocale: 'ko',
+    locales: ['ko'],
   },
   presets: [
     [
@@ -45,8 +45,9 @@ const config = {
         //     'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         // },
         blog: {
-          blogDescription:"특별히 모나거나 튀지 않고 골고루 하려고 노력합니다.",
-          routeBasePath: '/', 
+          blogDescription:
+            '특별히 모나거나 튀지 않고 골고루 하려고 노력합니다.',
+          routeBasePath: '/',
           // feedOptions: {
           //   type: 'all',
           //   copyright: `Copyright © ${new Date().getFullYear()} Facebook, Inc.`,
@@ -59,17 +60,17 @@ const config = {
           //     });
           //   },
           // },
-          
+
           // blogSidebarTitle: 'All posts',
           blogSidebarCount: 0,
-          postsPerPage: "ALL", // blog 메뉴에 들어왔을때, 페이지 당 보여주는 블로그 수
+          postsPerPage: 'ALL', // blog 메뉴에 들어왔을때, 페이지 당 보여주는 블로그 수
           blogListComponent: '@theme/BlogListPage', // 블로그 리스트 컴포넌트
           blogPostComponent: '@theme/BlogPostPage', // 블로그 디테일 컴포넌트
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: ({locale, blogDirPath, blogPath, permalink}) =>
-          `https://github.com/ssusa2/docusaurus-blog/blob/master/${blogDirPath}/${blogPath}`,
+          editUrl: ({ locale, blogDirPath, blogPath, permalink }) =>
+            `https://github.com/ssusa2/docusaurus-blog/blob/master/${blogDirPath}/${blogPath}`,
           editLocalizedFiles: false,
           include: ['**/*.{md,mdx}'],
           exclude: [
@@ -88,72 +89,9 @@ const config = {
           ignorePatterns: ['/tags/**'],
           filename: 'sitemap.xml',
         },
-        
       }),
     ],
   ],
-  // presets: [
-  //   [
-  //     'classic',
-  //     /** @type {import('@docusaurus/preset-classic').Options} */
-  //     ({
-  //       docs: false,
-  //       //  {
-  //       //   sidebarPath: require.resolve('./sidebars.js'),
-  //       //   // Please change this to your repo.
-  //       //   // Remove this to remove the "edit this page" links.
-  //       //   editUrl:
-  //       //     'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-  //       // },
-  //       blog: {
-  //         blogDescription:"특별히 모나거나 튀지 않고 골고루 하려고 노력합니다.",
-  //         routeBasePath: '/', 
-  //         feedOptions: {
-  //           type: 'all',
-  //           copyright: `Copyright © ${new Date().getFullYear()} Facebook, Inc.`,
-  //           createFeedItems: async (params) => {
-  //             const {blogPosts, defaultCreateFeedItems, ...rest} = params;
-  //             return defaultCreateFeedItems({
-  //               // keep only the 10 most recent blog posts in the feed
-  //               blogPosts: blogPosts.filter((item, index) => index < 10),
-  //               ...rest,
-  //             });
-  //           },
-  //         },
-          
-  //         // blogSidebarTitle: 'All posts',
-  //         blogSidebarCount: 0,
-  //         postsPerPage: "ALL", // blog 메뉴에 들어왔을때, 페이지 당 보여주는 블로그 수
-  //         blogListComponent: '@theme/BlogListPage', // 블로그 리스트 컴포넌트
-  //         blogPostComponent: '@theme/BlogPostPage', // 블로그 디테일 컴포넌트
-  //         showReadingTime: true,
-  //         // Please change this to your repo.
-  //         // Remove this to remove the "edit this page" links.
-  //         editUrl: ({locale, blogDirPath, blogPath, permalink}) =>
-  //         `https://github.com/ssusa2/docusaurus-blog/blob/master/${blogDirPath}/${blogPath}`,
-  //         editLocalizedFiles: false,
-  //         include: ['**/*.{md,mdx}'],
-  //         exclude: [
-  //           '**/_*.{js,jsx,ts,tsx,md,mdx}',
-  //           '**/_*/**',
-  //           '**/*.test.{js,jsx,ts,tsx}',
-  //           '**/__tests__/**',
-  //         ],
-  //       },
-  //       theme: {
-  //         customCss: require.resolve('./src/css/custom.css'),
-  //       },
-  //     }),
-  //     // {
-  //     //   sitemap: {
-  //     //     changefreq: 'weekly',
-  //     //     priority: 0.5,
-  //     //     ignorePatterns: ['/tags/**'],
-  //     //     filename: 'sitemap.xml',
-  //     //   },
-  //     // },
-  //   ],
-  // ],
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -162,7 +100,7 @@ const config = {
       // Replace with your project's social card
       // image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        // hideOnScroll:true, 
+        // hideOnScroll:true,
         title: '두루뭉실',
         logo: {
           alt: 'My Site Logo',
@@ -173,6 +111,11 @@ const config = {
           {
             href: 'https://github.com/ssusa2',
             label: 'GitHub',
+            position: 'right',
+          },
+          {
+            to: '/helloReact',
+            label: 'Resume',
             position: 'right',
           },
         ],
@@ -193,6 +136,6 @@ const config = {
         playgroundPosition: 'bottom',
       },
     }),
-};
+}
 
-module.exports = config;
+module.exports = config
