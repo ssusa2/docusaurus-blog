@@ -24,11 +24,14 @@ export const ThumNailImage = ({ src, alt }) => {
       )}
       <img
         style={{
+          position: 'absolute', // 상단에 고정
+          top: 0,
+          left: 0,
           width: '100%',
           height: '100%',
           objectFit: 'cover',
-          transition: 'opacity 0.5s ease-in-out', // 부드러운 전환
-          opacity: loaded ? 1 : 0, // 로드되기 전 투명
+          transition: 'opacity 0.5s ease-in-out',
+          opacity: loaded ? 1 : 0,
           display: 'block',
         }}
         alt={`${alt}`}
@@ -40,7 +43,7 @@ export const ThumNailImage = ({ src, alt }) => {
         `}
         sizes='(max-width: 668px) 280px, 100vw'
         onLoad={() => setLoaded(true)}
-        loading='lazy' // lazy 로드
+        loading='lazy'
       />
     </div>
   )
