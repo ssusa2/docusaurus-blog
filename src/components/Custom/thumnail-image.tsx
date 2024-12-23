@@ -3,10 +3,6 @@ import React from 'react'
 export const ThumNailImage = ({ src, alt }) => {
   const [loaded, setLoaded] = React.useState(false)
 
-  React.useEffect(() => {
-    setLoaded(false) // src가 변경될 때 loaded 상태 초기화
-  }, [src])
-
   return (
     <div
       style={{
@@ -17,25 +13,13 @@ export const ThumNailImage = ({ src, alt }) => {
         marginBottom: '20px',
       }}
     >
-      {!loaded && (
-        <div
-          style={{
-            backgroundColor: '#f0f0f0',
-            width: '100%',
-            height: '100%',
-          }}
-        />
-      )}
       <img
         style={{
-          position: 'absolute', // 상단에 고정
-          top: 0,
           left: 0,
           width: '100%',
           height: '100%',
           objectFit: 'cover',
-          transition: 'opacity 0.5s ease-in-out',
-          opacity: loaded ? 1 : 0,
+
           display: 'block',
         }}
         alt={`${alt}`}
@@ -46,8 +30,7 @@ export const ThumNailImage = ({ src, alt }) => {
           ${src}?w=840 840w
         `}
         sizes='(max-width: 668px) 280px, 100vw'
-        onLoad={() => setLoaded(true)}
-        loading='lazy'
+        loading='eager'
       />
     </div>
   )
