@@ -3,6 +3,10 @@ import React from 'react'
 export const ThumNailImage = ({ src, alt }) => {
   const [loaded, setLoaded] = React.useState(false)
 
+  React.useEffect(() => {
+    setLoaded(false) // src가 변경될 때 loaded 상태 초기화
+  }, [src])
+
   return (
     <div
       style={{
