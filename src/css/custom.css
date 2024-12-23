@@ -15,16 +15,16 @@
   --ifm-color-primary-lightest: #306f83;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-  --base:black;
-  --center-back:rgb(245 245 245);
+  --base: black;
+  --center-back: rgb(245 245 245);
 }
-:root p{
+:root p {
   font-size: 17px;
   color: #333d4b;
-  line-height:1.6;
+  line-height: 1.6;
 }
 
-[data-theme='dark'] p{
+[data-theme='dark'] p {
   color: #e3e3e3;
 }
 
@@ -39,13 +39,11 @@
   --ifm-color-primary-lightest: #ffffff;
   --ifm-background-color: #255565;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
-  --base:#e3e3e3;
-    --center-back:rgb(50 50 50);
+  --base: #e3e3e3;
+  --center-back: rgb(50 50 50);
 }
 
-
-
- /* 블로그 커스텀 css START */
+/* 블로그 커스텀 css START */
 .blog-list-item {
   --ifm-col-width: 100% !important;
   width: 100% !important;
@@ -54,44 +52,41 @@
   gap: 20px !important;
   margin-bottom: 40px !important;
 }
-.blog-list-item:hover{
+.blog-list-item:hover {
   text-decoration: none !important;
 }
 
-.blog-list-item:hover .blog-list-img{
+.blog-list-item:hover .blog-list-img {
   /* text-decoration: none; */
   /* background-color: #1fa588; */
   transform: translateY(-10px) !important;
   box-shadow: 0 5px 30px rgba(37, 85, 101, 0.4) !important;
 }
-.blog-list-item:hover .blog-list-content-title{
+.blog-list-item:hover .blog-list-content-title {
   color: var(--ifm-color-primary) !important;
 }
-
-
 
 .blog-list-img-wrap {
   position: relative !important;
   width: 100% !important;
   max-width: 280px !important;
-  height:280px !important;
+  height: 280px !important;
 }
-.blog-list-img{
-  position: absolute !important; 
+.blog-list-img {
+  position: absolute !important;
   width: 100% !important;
   height: 100% !important;
   border-radius: 14px !important;
   object-fit: cover !important;
   transition: 0.3s all ease-in-out !important;
 }
-.blog-list-date{
+.blog-list-date {
   color: #868b94 !important;
   font-size: 14px !important;
   /* transition: 0.3s all ease-in-out !important; */
-
 }
 
-.blog-list-content{
+.blog-list-content {
   max-width: 658px;
   --ifm-col-width: 100% !important;
   width: 100% !important;
@@ -99,97 +94,88 @@
   flex-direction: column !important;
   justify-content: space-between !important;
 }
-.blog-list-content-desc{
+.blog-list-content-desc {
   font-size: 17px !important;
   color: #4e5968 !important;
 }
 
-.blog-list-content-title{
+.blog-list-content-title {
   color: var(--base) !important;
   font-size: 36px !important;
   transition: 0.2s all ease-in-out !important;
 }
-.blog-list-content-title:hover{
+.blog-list-content-title:hover {
   text-decoration: none !important;
   color: var(--ifm-color-primary) !important;
 }
 
-.blog-list-tag-list{
+.blog-list-tag-list {
   display: flex !important;
   justify-content: space-between !important;
   gap: 12px !important;
 }
-.blog-list-tag-item{
+.blog-list-tag-item {
   font-size: 14px !important;
   padding: 0px 14px !important;
   border-radius: 200px !important;
   color: #868b94 !important;
   background-color: #f2f3f6 !important;
 }
-.blog-list-tag-item:hover{
+.blog-list-tag-item:hover {
   text-decoration: none !important;
   background-color: var(--ifm-color-primary-darkest) !important;
   color: white !important;
 }
 
-
 /*  */
-.table-of-contents__link--active{
+.table-of-contents__link--active {
   font-weight: 600 !important;
 }
 /*  */
 
 /* PaginatorNavLink START */
-.pagination-nav__link{
+.pagination-nav__link {
   border: none !important;
   padding: 0 !important;
 }
 
-.pagination-nav__sublabel{
+.pagination-nav__sublabel {
   margin-top: 8px !important;
 }
-.pagination-nav__link--next img{
+.pagination-nav__link--next img {
   border-top-right-radius: 14px !important;
   border-bottom-right-radius: 14px !important;
-    transition: 0.3s all ease-in-out !important;  
-}
-.pagination-nav__link--next:hover img{
-    box-shadow: 0 5px 30px rgba(37, 85, 101, 0.25) !important;
-}
-
-.pagination-nav__link--next{
   transition: 0.3s all ease-in-out !important;
-
 }
-.pagination-nav__link--next:hover{
-  transform: translateY(-10px) !important;
-
+.pagination-nav__link--next:hover img {
+  box-shadow: 0 5px 30px rgba(37, 85, 101, 0.25) !important;
 }
-.pagination-nav__link--prev{
+
+.pagination-nav__link--next {
   transition: 0.3s all ease-in-out !important;
-
 }
-
-.pagination-nav__link--prev:hover{
+.pagination-nav__link--next:hover {
   transform: translateY(-10px) !important;
-
+}
+.pagination-nav__link--prev {
+  transition: 0.3s all ease-in-out !important;
 }
 
-
-.pagination-nav__link--prev:hover img{
-    box-shadow: 0 5px 30px rgba(37, 85, 101, 0.25) !important;
-
+.pagination-nav__link--prev:hover {
+  transform: translateY(-10px) !important;
 }
 
-.pagination-nav__link--prev img{
+.pagination-nav__link--prev:hover img {
+  box-shadow: 0 5px 30px rgba(37, 85, 101, 0.25) !important;
+}
+
+.pagination-nav__link--prev img {
   border-top-left-radius: 14px !important;
   border-bottom-left-radius: 14px !important;
-    transition: 0.3s all ease-in-out !important;
-
-
+  transition: 0.3s all ease-in-out !important;
 }
 
-#center-compontent{
+#center-compontent {
   text-align: center;
   font-weight: bold;
   background-color: var(--center-back);
@@ -197,35 +183,35 @@
   padding: 8px 12px;
   margin-bottom: 20px;
 }
-#center-compontent p{
+#center-compontent p {
   margin: 0;
 }
 
-
+#highlight {
+  background-color: white;
+}
 
 /* PaginatorNavLink END */
-@media  (max-width: 700px) {
-  .blog-list-item{
+@media (max-width: 700px) {
+  .blog-list-item {
     display: block !important;
-
   }
   .blog-list-img-wrap {
-    width: 100% !important;  
+    width: 100% !important;
     max-width: initial !important;
     margin-bottom: 20px !important;
   }
-  .blog-list-content{
+  .blog-list-content {
     max-width: unset;
   }
-  .blog-list-content-title{
+  .blog-list-content-title {
     font-size: 26px !important;
   }
-  .blog-list-date{
+  .blog-list-date {
     color: #868b94 !important;
     font-size: 13px !important;
     /* transition: 0.3s all ease-in-out; */
-  
   }
 }
 
- /* 블로그 커스텀 css END */
+/* 블로그 커스텀 css END */

@@ -1,21 +1,22 @@
-import React from 'react';
-import MDXHead from '@theme/MDXComponents/Head';
-import MDXCode from '@theme/MDXComponents/Code';
-import MDXA from '@theme/MDXComponents/A';
-import MDXPre from '@theme/MDXComponents/Pre';
-import MDXDetails from '@theme/MDXComponents/Details';
-import MDXHeading from '@theme/MDXComponents/Heading';
-import MDXUl from '@theme/MDXComponents/Ul';
-import MDXImg from '@theme/MDXComponents/Img';
-import Admonition from '@theme/Admonition';
-import Mermaid from '@theme/Mermaid';
-import { EImage } from '@site/src/components/Custom/external-image';
-import { ThumNailImage } from '@site/src/components/Custom/thumnail-image';
-import { Q } from '@site/src/components/Custom/Q';
-import { Center } from '@site/src/components/Custom/center-text';
-import { GIF } from '@site/src/components/Custom/GIF';
-import { Image } from '@site/src/components/Custom/internal-image';
-import { RevealTest } from '@site/src/components/Custom/reveal';
+import React from 'react'
+import MDXHead from '@theme/MDXComponents/Head'
+import MDXCode from '@theme/MDXComponents/Code'
+import MDXA from '@theme/MDXComponents/A'
+import MDXPre from '@theme/MDXComponents/Pre'
+import MDXDetails from '@theme/MDXComponents/Details'
+import MDXHeading from '@theme/MDXComponents/Heading'
+import MDXUl from '@theme/MDXComponents/Ul'
+import MDXImg from '@theme/MDXComponents/Img'
+import Admonition from '@theme/Admonition'
+import Mermaid from '@theme/Mermaid'
+import { EImage } from '@site/src/components/Custom/external-image'
+import { ThumNailImage } from '@site/src/components/Custom/thumnail-image'
+import { Q } from '@site/src/components/Custom/Q'
+import { Center } from '@site/src/components/Custom/center-text'
+import { Highlight } from '@site/src/components/Custom/highlight'
+import { GIF } from '@site/src/components/Custom/GIF'
+import { Image } from '@site/src/components/Custom/internal-image'
+import { RevealTest } from '@site/src/components/Custom/reveal'
 
 const MDXComponents = {
   head: MDXHead,
@@ -25,20 +26,21 @@ const MDXComponents = {
   details: MDXDetails,
   ul: MDXUl,
   img: MDXImg,
-  h1: (props) => <MDXHeading as="h1" {...props} />,
-  h2: (props) => <MDXHeading as="h2" {...props} />,
-  h3: (props) => <MDXHeading as="h3" {...props} />,
-  h4: (props) => <MDXHeading as="h4" {...props} />,
-  h5: (props) => <MDXHeading as="h5" {...props} />,
-  h6: (props) => <MDXHeading as="h6" {...props} />,
+  h1: (props) => <MDXHeading as='h1' {...props} />,
+  h2: (props) => <MDXHeading as='h2' {...props} />,
+  h3: (props) => <MDXHeading as='h3' {...props} />,
+  h4: (props) => <MDXHeading as='h4' {...props} />,
+  h5: (props) => <MDXHeading as='h5' {...props} />,
+  h6: (props) => <MDXHeading as='h6' {...props} />,
   admonition: Admonition,
   mermaid: Mermaid,
   EImage,
   ThumNailImage,
   Center,
+  Highlight,
   GIF,
   Q,
   Image,
-  RevealTest
-};
-export default MDXComponents;
+  RevealTest,
+}
+export default MDXComponents

@@ -1,7 +1,7 @@
-import React from "react"
-import { BlogPostProvider } from "@docusaurus/theme-common/internal"
-import BlogPostItem from "@theme/BlogPostItem"
-import type { Props } from "@theme/BlogPostItems"
+import React from 'react'
+import { BlogPostProvider } from '@docusaurus/theme-common/internal'
+import BlogPostItem from '@theme/BlogPostItem'
+import type { Props } from '@theme/BlogPostItems'
 
 function Date({
   date,
@@ -40,13 +40,18 @@ export default function BlogPostItems({
                     height='280'
                     className='blog-list-img'
                     src={`${BlogPostContent.frontMatter.image}`}
+                    srcSet={`
+                    ${BlogPostContent.frontMatter.image}?w=280 280w,
+                    ${BlogPostContent.frontMatter.image}?w=560 560w,
+                    ${BlogPostContent.frontMatter.image}?w=840 840w
+                  `}
                   />
                 </a>
               </div>
               <div className='blog-list-content'>
                 <a
                   style={{
-                    textDecoration: "none",
+                    textDecoration: 'none',
                   }}
                   href={`/${BlogPostContent.frontMatter.slug}`}
                 >
@@ -56,7 +61,7 @@ export default function BlogPostItems({
                 </a>
                 <a
                   style={{
-                    textDecoration: "none",
+                    textDecoration: 'none',
                   }}
                   href={`/${BlogPostContent.frontMatter.slug}`}
                 >
@@ -68,7 +73,7 @@ export default function BlogPostItems({
                   <div className='blog-list-tag-list'>
                     <div className='blog-list-tag-list'>
                       {BlogPostContent.frontMatter.tags.map((el, i) => {
-                        console.log("tag", el)
+                        console.log('tag', el)
                         return (
                           <a
                             className='blog-list-tag-item'

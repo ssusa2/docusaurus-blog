@@ -1,21 +1,30 @@
-import React from "react"
+import React from 'react'
 
-/**
- * 썸네일 이미지 컴포넌트
- */
 export const ThumNailImage = ({ src, alt }) => {
+  const [loaded, setLoaded] = React.useState(false)
+
   return (
-    <img
-      style={{
-        width: "100%",
-        objectFit: "cover",
-      }}
-      alt={`${alt}`}
-      src={`${src}`}
-      size='(max-width: 668px)'
-      width='668'
-      height='334'
-      loading='eager'
-    />
+    <div style={{ position: 'relative', width: '100%', height: '334px' }}>
+      {!loaded && (
+        <div
+          style={{
+            backgroundColor: '#f0f0f0',
+            width: '100%',
+            height: '100%',
+          }}
+        />
+      )}
+      <img
+        style={{
+          width: '100%',
+          objectFit: 'cover',
+          display: loaded ? 'block' : 'none',
+        }}
+        alt={`${alt}`}
+        src={`${src}`}
+        onLoad={() => setLoaded(true)}
+        loading='lazy'
+      />
+    </div>
   )
 }

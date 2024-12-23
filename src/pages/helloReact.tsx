@@ -1,6 +1,9 @@
 import React from 'react'
 import Layout from '@theme/Layout'
 import { cvInfoList } from '../assets/cv-info'
+import { AboutMe } from '../components/Resume/about-me'
+import { Description } from '../components/Resume/description'
+import { Project } from '../components/Resume/project'
 
 export default function Hello() {
   const h = 5
@@ -33,6 +36,8 @@ export default function Hello() {
             padding: 20,
           }}
         >
+          <AboutMe />
+          <Description />
           {/* {Array(h * w)
             .fill()
             .map((arr, i) => {
@@ -52,23 +57,22 @@ export default function Hello() {
               )
             })} */}
           {cvInfoList.map((project, index) => {
-            return (
-              <div
-                style={{
-                  position: 'relative',
-                  width: '100%',
-                  height: '100%',
-                  background: '#e7e7e7',
-                  borderRadius: 8,
-                }}
-              >
-                {project.name}
-                {project.description}
-              </div>
-            )
+            return <Project key={index} {...project} />
           })}
         </div>
       </section>
     </Layout>
   )
 }
+// <div
+//   style={{
+//     position: 'relative',
+//     width: '100%',
+//     height: '100%',
+//     background: '#e7e7e7',
+//     borderRadius: 8,
+//   }}
+// >
+//   {project.name}
+//   {project.description}
+// </div>
