@@ -120,7 +120,7 @@
 
 .blog-list-tag-list {
   display: flex !important;
-  justify-content: space-between !important;
+  justify-content: flex-start !important;
   gap: 12px !important;
 }
 .blog-list-tag-item {
