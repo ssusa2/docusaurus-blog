@@ -22,6 +22,8 @@ export default function BlogPostItems({
   component: BlogPostItemComponent = BlogPostItem,
 }: Props): JSX.Element {
   console.log(items)
+  const [loaded, setLoaded] = React.useState(false)
+
   return (
     <>
       {items?.map(({ content: BlogPostContent }) => (
@@ -34,11 +36,12 @@ export default function BlogPostItems({
               <div className='blog-list-img-wrap'>
                 <a href={`/${BlogPostContent.frontMatter.slug}`}>
                   <img
-                    loading='eager'
-                    size='(max-width: 668px)'
+                    onLoad={() => setLoaded(true)} // 이미지 로드 후 상태 변경
+                    loading='lazy' // lazy-loading 적용
+                    sizes='(max-width: 668px) 280px, 100vw'
                     width='280'
                     height='280'
-                    className='blog-list-img'
+                    className={`blog-list-img ${loaded ? 'loaded' : ''}`}
                     src={`${BlogPostContent.frontMatter.image}`}
                     srcSet={`
                     ${BlogPostContent.frontMatter.image}?w=280 280w,

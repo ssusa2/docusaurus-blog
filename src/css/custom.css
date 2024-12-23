@@ -79,7 +79,16 @@
   border-radius: 14px !important;
   object-fit: cover !important;
   transition: 0.3s all ease-in-out !important;
+  background-color: #f0f0f0; /* 로딩 중 배경색 */
+  filter: blur(10px); /* 블러 효과 */
+  opacity: 0; /* 초기 상태에서 이미지 숨김 */
 }
+
+.blog-list-img.loaded {
+  filter: blur(0); /* 블러 제거 */
+  opacity: 1; /* 이미지 보이기 */
+}
+
 .blog-list-date {
   color: #868b94 !important;
   font-size: 14px !important;
