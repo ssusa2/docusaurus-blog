@@ -9,6 +9,7 @@ export const ThumNailImage = ({ src, alt }) => {
         position: 'relative',
         width: '100%',
         height: '334px',
+        overflow: 'hidden',
         marginBottom: '20px',
       }}
     >
@@ -26,14 +27,20 @@ export const ThumNailImage = ({ src, alt }) => {
           width: '100%',
           height: '100%',
           objectFit: 'cover',
-          opacity: loaded ? 1 : 0, // 로드 전에는 투명
-          transition: 'opacity 0.5s ease-in-out', // 서서히 나타나는 효과
+          transition: 'opacity 0.5s ease-in-out', // 부드러운 전환
+          opacity: loaded ? 1 : 0, // 로드되기 전 투명
           display: 'block',
         }}
-        alt={alt}
-        src={src}
-        onLoad={() => setLoaded(true)} // 로드 후 상태 변경
-        loading='eager'
+        alt={`${alt}`}
+        src={`${src}`}
+        srcSet={`
+          ${src}?w=280 280w,
+          ${src}?w=560 560w,
+          ${src}?w=840 840w
+        `}
+        sizes='(max-width: 668px) 280px, 100vw'
+        onLoad={() => setLoaded(true)}
+        loading='lazy' // lazy 로드
       />
     </div>
   )
