@@ -39,7 +39,7 @@ export const ThumNailImage = ({ src, alt }) => {
           display: 'block',
         }}
         alt={`${alt}`}
-        src={`${src}`}
+        src={`${src}?cacheBust=${Date.now()}`}
         srcSet={`
           ${src}?w=280 280w,
           ${src}?w=560 560w,
