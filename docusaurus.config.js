@@ -113,11 +113,11 @@ const config = {
             label: 'GitHub',
             position: 'right',
           },
-          {
-            to: '/helloReact',
-            label: 'Resume',
-            position: 'right',
-          },
+          // {
+          //   to: '/resume',
+          //   label: 'Resume',
+          //   position: 'right',
+          // },
         ],
       },
       footer: {
